@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jxxan Leeのゲームオーディオ、作曲、映像音楽、制作経験の作品ページ">
+  <meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, noimageindex">
+  <meta name="theme-color" content="#f4f0e9">
+  <title>Works | Jxxan Lee</title>
+
+  <style>
+    :root {
+      --bg: #f4f0e9;
+      --bg-soft: #faf7f1;
+      --surface: #fffdf9;
+      --text: #24231f;
+      --muted: #6f6b63;
+      --light: #928c82;
+      --accent: #5e746a;
+      --accent-deep: #40564d;
+      --line: rgba(36, 35, 31, 0.14);
+      --line-strong: rgba(36, 35, 31, 0.25);
+      --shadow: 0 20px 54px rgba(69, 61, 48, 0.10);
+      --content: 1280px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 94% 6%, rgba(171, 193, 180, 0.28), transparent 26%),
+        linear-gradient(180deg, #f8f5ef 0%, var(--bg) 58%, #eee8de 100%);
+      color: var(--text);
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Helvetica Neue",
+        "Hiragino Sans",
+        "Hiragino Kaku Gothic ProN",
+        "Yu Gothic",
+        "YuGothic",
+        "Noto Sans JP",
+        sans-serif;
+      line-height: 1.85;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .shell {
+      width: min(var(--content), calc(100% - 72px));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(248, 245, 239, 0.89);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .nav-inner {
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .logo {
+      flex-shrink: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 34px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .nav-links a {
+      position: relative;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: -8px;
+      left: 0;
+      height: 1px;
+      background: var(--accent-deep);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 180ms ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a[aria-current="page"]::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .page-hero {
+      padding: 112px 0 96px;
+    }
+
+    .page-kicker {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 0 0 24px;
+      color: var(--accent-deep);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .page-kicker::before {
+      content: "";
+      width: 50px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .page-title {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", "Yu Mincho", serif;
+      font-size: clamp(72px, 11vw, 150px);
+      font-weight: 500;
+      line-height: 0.95;
+      letter-spacing: -0.055em;
+    }
+
+    .page-intro {
+      max-width: 760px;
+      margin: 38px 0 0;
+      color: var(--muted);
+      font-size: clamp(16px, 1.6vw, 19px);
+      line-height: 2;
+    }
+
+    .section {
+      padding: 108px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: 120px minmax(0, 1fr);
+      gap: 48px;
+      margin-bottom: 62px;
+    }
+
+    .section-number {
+      color: var(--accent-deep);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 13px;
+    }
+
+    .section-label {
+      margin: 0 0 10px;
+      color: var(--accent-deep);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", "Yu Mincho", serif;
+      font-size: clamp(40px, 5vw, 70px);
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+    }
+
+    .section-intro {
+      max-width: 760px;
+      margin: 23px 0 0;
+      color: var(--muted);
+    }
+
+    /* Video works */
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 54px 28px;
+    }
+
+    .video-work {
+      min-width: 0;
+    }
+
+    .video-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(94, 116, 106, 0.78), rgba(47, 62, 55, 0.88));
+      box-shadow: var(--shadow);
+    }
+
+    .video-frame iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: 0;
+    }
+
+    .video-placeholder {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 30px;
+      color: rgba(255, 255, 255, 0.78);
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .video-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line-strong);
+      margin-top: 18px;
+    }
+
+    .video-meta h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", "Yu Mincho", serif;
+      font-size: 25px;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    .video-type {
+      flex-shrink: 0;
+      color: var(--accent-deep);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .video-description {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      padding: 5px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+    }
+
+    /* Audio works */
+
+    .audio-list {
+      display: grid;
+      gap: 54px;
+    }
+
+    .audio-block {
+      display: grid;
+      grid-template-columns: minmax(220px, 0.38fr) minmax(0, 1fr);
+      gap: clamp(38px, 6vw, 84px);
+      padding-top: 32px;
+      border-top: 1px solid var(--line-strong);
+    }
+
+    .audio-block h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", "Yu Mincho", serif;
+      font-size: clamp(28px, 3.5vw, 45px);
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    .audio-block p {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .soundcloud-wrap {
+      overflow: hidden;
+      min-height: 250px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .soundcloud-wrap iframe {
+      width: 100%;
+      height: 260px;
+      display: block;
+      border: 0;
+    }
+
+    .embed-placeholder {
+      min-height: 250px;
+      display: grid;
+      place-items: center;
+      padding: 28px;
+      color: var(--light);
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* Experience timeline */
+
+    .timeline {
+      border-top: 1px solid var(--line-strong);
+    }
+
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 120px minmax(240px, 0.55fr) minmax(0, 1fr);
+      gap: 36px;
+      padding: 34px 0 39px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .timeline-year {
+      color: var(--accent-deep);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 15px;
+    }
+
+    .timeline-title h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", "Yu Mincho", serif;
+      font-size: 26px;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    .timeline-role {
+      margin: 10px 0 0;
+      color: var(--accent-deep);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .timeline-description {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.95;
+    }
+
+    /* Research */
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: minmax(250px, 0.54fr) minmax(0, 1.46fr);
+      gap: clamp(50px, 8vw, 118px);
+      align-items: start;
+    }
+
+    .research-quote {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", "Yu Mincho", serif;
+      font-size: clamp(28px, 3.6vw, 47px);
+      line-height: 1.43;
+    }
+
+    .research-copy p {
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 2;
+    }
+
+    /* Back / contact */
+
+    .bottom-panel {
+      padding: 100px 0;
+      background: var(--accent-deep);
+      color: #f8f5ef;
+    }
+
+    .bottom-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 40px;
+      align-items: end;
+    }
+
+    .bottom-grid h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", "Yu Mincho", serif;
+      font-size: clamp(45px, 7vw, 92px);
+      font-weight: 500;
+      line-height: 1.03;
+      letter-spacing: -0.035em;
+    }
+
+    .bottom-grid p {
+      max-width: 680px;
+      margin: 28px 0 0;
+      color: rgba(255, 255, 255, 0.70);
+    }
+
+    .button {
+      min-height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 12px 24px;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      border-radius: 999px;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .button::after {
+      content: "↗";
+      font-size: 15px;
+    }
+
+    .site-footer {
+      background: var(--accent-deep);
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .footer-inner {
+      min-height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 22px;
+    }
+
+    @media (max-width: 900px) {
+      .shell {
+        width: min(var(--content), calc(100% - 46px));
+      }
+
+      .audio-block,
+      .research-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-row {
+        grid-template-columns: 90px minmax(0, 1fr);
+      }
+
+      .timeline-description {
+        grid-column: 2;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .shell {
+        width: min(var(--content), calc(100% - 34px));
+      }
+
+      .nav-inner {
+        min-height: 72px;
+      }
+
+      .logo {
+        font-size: 13px;
+      }
+
+      .nav-links {
+        max-width: 66%;
+        overflow-x: auto;
+        gap: 20px;
+        padding: 12px 0;
+        scrollbar-width: none;
+      }
+
+      .nav-links::-webkit-scrollbar {
+        display: none;
+      }
+
+      .nav-links a {
+        white-space: nowrap;
+        font-size: 10px;
+      }
+
+      .page-hero {
+        padding: 80px 0 72px;
+      }
+
+      .section {
+        padding: 86px 0;
+      }
+
+      .section-heading {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin-bottom: 48px;
+      }
+
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .video-meta {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .audio-block {
+        gap: 30px;
+      }
+
+      .timeline-row {
+        grid-template-columns: 1fr;
+        gap: 13px;
+      }
+
+      .timeline-description {
+        grid-column: auto;
+      }
+
+      .bottom-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        min-height: 110px;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .shell {
+        width: min(var(--content), calc(100% - 28px));
+      }
+
+      .logo {
+        max-width: 108px;
+        overflow: hidden;
+        font-size: 12px;
+        text-overflow: ellipsis;
+      }
+
+      .nav-links {
+        max-width: calc(100% - 118px);
+      }
+
+      .page-title {
+        font-size: clamp(68px, 23vw, 104px);
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="shell nav-inner">
+      <a class="logo" href="./index.html" aria-label="Jxxan Lee ホーム">JXXAN LEE</a>
+
+      <nav aria-label="メインナビゲーション">
+        <ul class="nav-links">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./works.html" aria-current="page">Works</a></li>
+          <li><a href="./index.html#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="./index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <header class="shell page-hero">
+      <p class="page-kicker">Portfolio / Experience / Research</p>
+      <h1 class="page-title">Works</h1>
+      <p class="page-intro">
+        ゲームオーディオ実装、サウンドデザイン、ゲーム音楽、映像音楽を中心に、
+        制作経験と大学での研究方向をまとめています。
+      </p>
+    </header>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-heading">
+          <div class="section-number">01</div>
+          <div>
+            <p class="section-label">Video Works</p>
+            <h2 class="section-title">Selected video works.</h2>
+            <p class="section-intro">
+              YouTubeへ公開した作品は、下の映像枠に埋め込んで表示できます。
+            </p>
+          </div>
+        </div>
+
+        <div class="video-grid">
+          <article class="video-work">
+            <div class="video-frame">
+              <!--
+                YouTubeを埋め込む場合、このvideo-placeholderを削除して、
+                SoundCloudではなくYouTubeのiframeをここへ貼り付けてください。
+              -->
+              <div class="video-placeholder">YouTube Embed / Thumbnail</div>
+            </div>
+
+            <div class="video-meta">
+              <h3>UE5 Horror Game Audio</h3>
+              <div class="video-type">Game Audio</div>
+            </div>
+
+            <p class="video-description">
+              Unreal Engine 5、Wwise、REAPER、Logic Proを使用した個人制作。
+              グラフィックおよび3Dモデルを除き、ゲームプレイ設計、Blueprint、
+              楽曲制作、効果音制作、サウンド実装を担当。
+            </p>
+
+            <div class="tags">
+              <span class="tag">Wwise</span>
+              <span class="tag">Unreal Engine 5</span>
+              <span class="tag">Blueprint</span>
+              <span class="tag">Sound Design</span>
+            </div>
+          </article>
+
+          <article class="video-work">
+            <div class="video-frame">
+              <div class="video-placeholder">YouTube Embed / Thumbnail</div>
+            </div>
+
+            <div class="video-meta">
+              <h3>Three-Phase Boss Battle</h3>
+              <div class="video-type">Interactive Music</div>
+            </div>
+
+            <p class="video-description">
+              戦闘の三段階に合わせて展開するボス戦楽曲。
+              ロック、オーケストラ、現代音楽的な表現を組み合わせました。
+            </p>
+
+            <div class="tags">
+              <span class="tag">Composition</span>
+              <span class="tag">Arrangement</span>
+              <span class="tag">Mixing</span>
+            </div>
+          </article>
+
+          <article class="video-work">
+            <div class="video-frame">
+              <div class="video-placeholder">YouTube Embed / Thumbnail</div>
+            </div>
+
+            <div class="video-meta">
+              <h3>Sound Design Demo</h3>
+              <div class="video-type">Sound Redesign</div>
+            </div>
+
+            <p class="video-description">
+              映像に合わせた効果音制作、フォーリー、編集、
+              ミキシングを行ったサウンドリデザイン作品です。
+            </p>
+
+            <div class="tags">
+              <span class="tag">Sound Design</span>
+              <span class="tag">Foley</span>
+              <span class="tag">Pro Tools</span>
+            </div>
+          </article>
+
+          <article class="video-work">
+            <div class="video-frame">
+              <div class="video-placeholder">YouTube Embed / Thumbnail</div>
+            </div>
+
+            <div class="video-meta">
+              <h3>Scoring to Picture</h3>
+              <div class="video-type">Film &amp; Media</div>
+            </div>
+
+            <p class="video-description">
+              映像の展開、場面転換、登場人物の感情に合わせて制作した
+              映像音楽・劇伴作品を掲載するための枠です。
+            </p>
+
+            <div class="tags">
+              <span class="tag">Film &amp; Media Scoring</span>
+              <span class="tag">Composition</span>
+              <span class="tag">Orchestration</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-heading">
+          <div class="section-number">02</div>
+          <div>
+            <p class="section-label">Audio Works</p>
+            <h2 class="section-title">Selected audio works.</h2>
+            <p class="section-intro">
+              ゲーム音楽と映像音楽を分け、SoundCloudのプレイリストを小さめの播放器で掲載します。
+            </p>
+          </div>
+        </div>
+
+        <div class="audio-list">
+          <article class="audio-block">
+            <div>
+              <p class="section-label">Game &amp; Interactive Music</p>
+              <h3>Game Music</h3>
+              <p>
+                ゲームの世界観、戦闘、探索、プレイヤーの状態を想定して制作した音楽作品です。
+              </p>
+            </div>
+
+            <div class="soundcloud-wrap">
+              <!--
+                SoundCloudのゲーム音楽プレイリストのiframeを、
+                下のembed-placeholderと置き換えてください。
+              -->
+              <div class="embed-placeholder">SoundCloud Game Playlist</div>
+            </div>
+          </article>
+
+          <article class="audio-block">
+            <div>
+              <p class="section-label">Film &amp; Media Scoring</p>
+              <h3>Music for Visual Media</h3>
+              <p>
+                映画、アニメーション、映像作品の物語や感情を想定して制作した劇伴音楽です。
+              </p>
+            </div>
+
+            <div class="soundcloud-wrap">
+              <!--
+                SoundCloudの映像音楽プレイリストのiframeを、
+                下のembed-placeholderと置き換えてください。
+              -->
+              <div class="embed-placeholder">SoundCloud Film Playlist</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="shell">
+        <div class="section-heading">
+          <div class="section-number">03</div>
+          <div>
+            <p class="section-label">Selected Projects</p>
+            <h2 class="section-title">Experience.</h2>
+            <p class="section-intro">
+              商業案件と誤解されないよう、個人制作・学生制作であることを明記しています。
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-row">
+            <div class="timeline-year">2026</div>
+
+            <div class="timeline-title">
+              <h3>UE5 Horror Game</h3>
+              <p class="timeline-role">Personal Project</p>
+            </div>
+
+            <p class="timeline-description">
+              Unreal Engine 5とWwiseを使用したホラーゲームを個人制作。
+              グラフィックおよび3Dモデルを除き、ゲームプレイ設計、Blueprint実装、
+              作曲、効果音制作、インタラクティブオーディオ実装を担当。
+            </p>
+          </article>
+
+          <article class="timeline-row">
+            <div class="timeline-year">2026</div>
+
+            <div class="timeline-title">
+              <h3>Three-Phase Boss Battle Music</h3>
+              <p class="timeline-role">Original Project</p>
+            </div>
+
+            <p class="timeline-description">
+              戦闘状況の三段階に合わせて、音楽構成と音響密度が変化する
+              ボス戦用インタラクティブミュージックを制作。
+              作曲、編曲、ミキシングを担当。
+            </p>
+          </article>
+
+          <article class="timeline-row">
+            <div class="timeline-year">2026</div>
+
+            <div class="timeline-title">
+              <h3>Sound Redesign Project</h3>
+              <p class="timeline-role">Student / Personal Work</p>
+            </div>
+
+            <p class="timeline-description">
+              映像に対する効果音制作、フォーリー、編集、ミキシングを行い、
+              画面上の動きや素材感を音で伝えるサウンドリデザインを制作。
+            </p>
+          </article>
+
+          <article class="timeline-row">
+            <div class="timeline-year">Current</div>
+
+            <div class="timeline-title">
+              <h3>Composition Activities</h3>
+              <p class="timeline-role">Kunitachi College of Music</p>
+            </div>
+
+            <p class="timeline-description">
+              二重奏、室内楽、管弦楽、吹奏楽、ファンファーレ、合唱など、
+              さまざまな編成のための作品を制作し、学内外の発表・演奏会に参加。
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-heading">
+          <div class="section-number">04</div>
+          <div>
+            <p class="section-label">Academic Research</p>
+            <h2 class="section-title">Research direction.</h2>
+          </div>
+        </div>
+
+        <div class="research-grid">
+          <p class="research-quote">
+            現代音楽の技法を、ゲームと映像のための新しい音響表現へ。
+          </p>
+
+          <div class="research-copy">
+            <p>
+              大学では、現代音楽の作曲技法および特殊奏法を、
+              ゲーム音楽や映像音楽などの商業音楽へ応用し、
+              新しい音響表現を生み出す可能性について研究しています。
+            </p>
+
+            <p>
+              伝統的なオーケストレーションに加え、特殊奏法、音色変化、
+              非機能和声、リズム構造などを活用し、物語、映像、
+              ゲーム体験に適した音楽表現を探求しています。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bottom-panel">
+      <div class="shell bottom-grid">
+        <div>
+          <h2>Back to profile.</h2>
+          <p>
+            個人紹介、日英プロフィール、スキル、連絡先はホームページに掲載しています。
+          </p>
+        </div>
+
+        <a class="button" href="./index.html">Go Home</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <div>© 2026 Jxxan Lee</div>
+      <div class="footer-links">
+        <a href="./index.html">Home</a>
+        <a href="./works.html">Works</a>
+        <a href="./index.html#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
