@@ -899,18 +899,337 @@
         animation-iteration-count: 1 !important;
       }
     }
+  
+    /* =========================================
+       Integrated Works page styles
+       ========================================= */
+
+    :root {
+      --accent-deep: var(--accent-dark);
+    }
+
+    #works,
+    #experience {
+      scroll-margin-top: 96px;
+    }
+
+    .page-hero {
+      padding: 112px 0 96px;
+    }
+
+    .page-kicker {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 0 0 24px;
+      color: var(--accent-deep);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .page-kicker::before {
+      content: "";
+      width: 50px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .page-title {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", "Yu Mincho", serif;
+      font-size: clamp(72px, 11vw, 150px);
+      font-weight: 500;
+      line-height: 0.95;
+      letter-spacing: -0.055em;
+    }
+
+    .page-intro {
+      max-width: 760px;
+      margin: 38px 0 0;
+      color: var(--muted);
+      font-size: clamp(16px, 1.6vw, 19px);
+      line-height: 2;
+    }
+
+    /* Video works */
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 54px 28px;
+    }
+
+    .video-work {
+      min-width: 0;
+    }
+
+    .video-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(94, 116, 106, 0.78), rgba(47, 62, 55, 0.88));
+      box-shadow: var(--shadow);
+    }
+
+    .video-frame iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: 0;
+    }
+
+    .video-placeholder {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 30px;
+      color: rgba(255, 255, 255, 0.78);
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .video-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line-strong);
+      margin-top: 18px;
+    }
+
+    .video-meta h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", "Yu Mincho", serif;
+      font-size: 25px;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    .video-type {
+      flex-shrink: 0;
+      color: var(--accent-deep);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .video-description {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      padding: 5px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+    }
+
+    /* Audio works */
+
+    .audio-list {
+      display: grid;
+      gap: 54px;
+    }
+
+    .audio-block {
+      display: grid;
+      grid-template-columns: minmax(220px, 0.38fr) minmax(0, 1fr);
+      gap: clamp(38px, 6vw, 84px);
+      padding-top: 32px;
+      border-top: 1px solid var(--line-strong);
+    }
+
+    .audio-block h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", "Yu Mincho", serif;
+      font-size: clamp(28px, 3.5vw, 45px);
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    .audio-block p {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .soundcloud-wrap {
+      overflow: hidden;
+      min-height: 250px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .soundcloud-wrap iframe {
+      width: 100%;
+      height: 260px;
+      display: block;
+      border: 0;
+    }
+
+    .embed-placeholder {
+      min-height: 250px;
+      display: grid;
+      place-items: center;
+      padding: 28px;
+      color: var(--light);
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* Experience timeline */
+
+    .timeline {
+      border-top: 1px solid var(--line-strong);
+    }
+
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 120px minmax(240px, 0.55fr) minmax(0, 1fr);
+      gap: 36px;
+      padding: 34px 0 39px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .timeline-year {
+      color: var(--accent-deep);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 15px;
+    }
+
+    .timeline-title h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", "Yu Mincho", serif;
+      font-size: 26px;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    .timeline-role {
+      margin: 10px 0 0;
+      color: var(--accent-deep);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .timeline-description {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.95;
+    }
+
+    /* Research */
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: minmax(250px, 0.54fr) minmax(0, 1.46fr);
+      gap: clamp(50px, 8vw, 118px);
+      align-items: start;
+    }
+
+    .research-quote {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", "Yu Mincho", serif;
+      font-size: clamp(28px, 3.6vw, 47px);
+      line-height: 1.43;
+    }
+
+    .research-copy p {
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 2;
+    }
+
+
+    @media (max-width: 900px) {
+      .audio-block,
+      .research-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-row {
+        grid-template-columns: 90px minmax(0, 1fr);
+      }
+
+      .timeline-description {
+        grid-column: 2;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .page-hero {
+        padding: 80px 0 72px;
+      }
+
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .video-meta {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .audio-block {
+        gap: 30px;
+      }
+
+      .timeline-row {
+        grid-template-columns: 1fr;
+        gap: 13px;
+      }
+
+      .timeline-description {
+        grid-column: auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-title {
+        font-size: clamp(68px, 23vw, 104px);
+      }
+    }
+
+
   </style>
 </head>
 
-<body>
+<body id="top">
   <header class="site-header">
     <div class="shell nav-inner">
-      <a class="logo" href="./index.html" aria-label="Jxxan Lee ホーム">JXXAN LEE</a>
+      <a class="logo" href="#top" aria-label="Jxxan Lee ホーム">JXXAN LEE</a>
 
       <nav aria-label="メインナビゲーション">
         <ul class="nav-links">
-          <li><a href="./index.html" aria-current="page">Home</a></li>
-          <li><a href="./works.html">Works</a></li>
+          <li><a href="#top" aria-current="page">Home</a></li>
+          <li><a href="#works">Works</a></li>
           <li><a href="#areas">Areas</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -993,7 +1312,7 @@
         </div>
 
         <div class="hero-actions">
-          <a class="button primary" href="./works.html">View Works</a>
+          <a class="button primary" href="#works">View Works</a>
           <a class="button" href="#areas">Creative Areas</a>
           <a class="button email" href="mailto:jxxan.lee@gmail.com">Contact</a>
         </div>
@@ -1125,25 +1444,555 @@
       </div>
     </section>
 
-    <!-- Link to Works page -->
+    <!-- Integrated Works content -->
+
+    <header class="shell page-hero" id="works">
+      <p class="page-kicker">Portfolio / Experience / Research</p>
+      <h1 class="page-title">Works</h1>
+      <p class="page-intro">
+        ゲームオーディオ実装、サウンドデザイン、ゲーム音楽、映像音楽を中心に、
+        制作経験と大学での研究方向をまとめています。
+      </p>
+    </header>
+
     <section class="section">
       <div class="shell">
-        <div class="works-callout">
+        <div class="section-heading">
+          <div class="section-number">01</div>
           <div>
-            <p class="section-label">Portfolio</p>
-            <h2>Selected Works</h2>
-            <p>
-              ゲームオーディオ実装、YouTube映像作品、ゲーム音楽、
-              映像音楽、SoundCloudプレイリストをWorksページにまとめています。
+            <p class="section-label">Video Works</p>
+            <h2 class="section-title">Selected video works.</h2>
+            <p class="section-intro">
+             
             </p>
           </div>
+        </div>
 
-          <a class="button primary" href="./works.html">Open Works</a>
+       <div class="video-grid">
+
+  <!-- 1. UE5 Horror Game Demo -->
+
+  <article class="video-work">
+    <div class="video-frame">
+      <div class="video-placeholder">
+        YouTube Embed / Thumbnail
+      </div>
+    </div>
+
+    <div class="video-meta">
+      <h3>UE5 Horror Game Demo</h3>
+
+      <div class="video-type">
+        Game Audio
+      </div>
+    </div>
+
+    <p class="video-description">
+      Unreal Engine 5、Wwise、REAPER、Logic Proを使用した個人制作。
+      グラフィックおよび3Dモデルを除き、ゲームプレイ設計、Blueprint、
+      楽曲制作、効果音制作、サウンド実装を担当。
+    </p>
+
+    <div class="tags">
+      <span class="tag">Wwise</span>
+      <span class="tag">Unreal Engine 5</span>
+      <span class="tag">Blueprint</span>
+      <span class="tag">Sound Design</span>
+      <span class="tag">Composition</span>
+    </div>
+  </article>
+
+
+  <!-- 2. Three-Phase Boss Battle Demo -->
+
+  <article class="video-work">
+    <div class="video-frame">
+      <iframe
+        src="https://www.youtube.com/embed/hW5pYX2Rsoc"
+        title="Three-Phase Boss Battle Demo"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <div class="video-meta">
+      <h3>Three-Phase Boss Battle Demo</h3>
+
+      <div class="video-type">
+        Interactive Music
+      </div>
+    </div>
+
+    <p class="video-description">
+      戦闘の三段階に合わせて展開するボス戦楽曲。
+      ロック、オーケストラ、現代音楽的な表現を組み合わせました。
+    </p>
+
+    <div class="tags">
+      <span class="tag">Wwise</span>
+      <span class="tag">Composition</span>
+      <span class="tag">Arrangement</span>
+      <span class="tag">Guitar</span>
+    </div>
+  </article>
+
+
+  <!-- 3. Sound Design & Film Scoring Demo -->
+
+  <article class="video-work">
+    <div class="video-frame">
+      <iframe
+        src="https://www.youtube.com/embed/wSyf9DSIvco"
+        title="Sound Design and Film Scoring Demo"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <div class="video-meta">
+      <h3>Sound Design &amp; Film Scoring Demo</h3>
+
+      <div class="video-type">
+        Sound Redesign / Film Scoring
+      </div>
+    </div>
+
+    <p class="video-description">
+      映像に合わせた音楽、効果音、フォーリー、編集、
+      ミキシングまで、すべての音を制作した作品です。
+    </p>
+
+    <div class="tags">
+      <span class="tag">Sound Design</span>
+      <span class="tag">Film Scoring</span>
+      <span class="tag">Foley</span>
+      <span class="tag">Mixing</span>
+    </div>
+  </article>
+
+
+  <!-- 4. Sound Design & Audio Post-Production Reel -->
+
+  <article class="video-work">
+    <div class="video-frame">
+
+      <!--
+        视频上传后，把下面的 video-placeholder 删除，
+        换成 YouTube iframe。
+      -->
+
+      <div class="video-placeholder">
+        YouTube Embed / Thumbnail
+      </div>
+    </div>
+
+    <div class="video-meta">
+      <h3>Sound Design &amp; Audio Post-Production Reel</h3>
+
+      <div class="video-type">
+        Sound Design / MA
+      </div>
+    </div>
+
+    <p class="video-description">
+      複数の映像作品に対して制作した効果音、フォーリー、
+      編集、ミキシングを一本にまとめたショーリールです。
+      画面上の動きや質感、プレイヤーの手応えを音によって表現しています。
+    </p>
+
+    <div class="tags">
+      <span class="tag">Sound Design</span>
+      <span class="tag">Foley</span>
+      <span class="tag">Audio Editing</span>
+      <span class="tag">Mixing</span>
+      <span class="tag">MA</span>
+    </div>
+  </article>
+
+
+  <!-- 5. Film & Media Scoring Reel -->
+
+  <article class="video-work">
+    <div class="video-frame">
+
+      <!--
+        视频上传后，把下面的 video-placeholder 删除，
+        换成 YouTube iframe。
+      -->
+
+      <div class="video-placeholder">
+        YouTube Embed / Thumbnail
+      </div>
+    </div>
+
+    <div class="video-meta">
+      <h3>Film &amp; Media Scoring Reel</h3>
+
+      <div class="video-type">
+        Scoring to Picture
+      </div>
+    </div>
+
+    <p class="video-description">
+      映画、テレビドラマ、アニメーションなどの映像表現を想定し、
+      映像の展開や登場人物の感情に合わせて制作した音楽作品を
+      一本にまとめたショーリールです。
+    </p>
+
+    <div class="tags">
+      <span class="tag">Composition</span>
+      <span class="tag">Film &amp; Media Scoring</span>
+      <span class="tag">Scoring to Picture</span>
+    </div>
+  </article>
+
+
+  <!-- 6. Art Music -->
+
+  <article class="video-work">
+    <div class="video-frame">
+      <div class="video-placeholder">
+        YouTube Embed / Thumbnail
+      </div>
+    </div>
+
+    <div class="video-meta">
+      <h3>Art Music</h3>
+
+      <div class="video-type">
+        Contemporary / Academic Music
+      </div>
+    </div>
+
+    <p class="video-description">
+      現代音楽の作曲技法、オーケストレーション、
+      特殊奏法などを用いて制作したアカデミック作品です。
+    </p>
+
+    <div class="tags">
+      <span class="tag">Sibelius</span>
+      <span class="tag">Composition</span>
+      <span class="tag">Orchestration</span>
+      <span class="tag">Contemporary Music</span>
+    </div>
+  </article>
+
+</div>
+</div>
+</section>
+
+    <!-- =========================
+     Audio Works
+     ========================= -->
+
+<section class="section">
+  <div class="shell">
+
+    <div class="section-heading">
+      <div class="section-number">02</div>
+
+      <div>
+        <p class="section-label">
+          Audio Works
+        </p>
+
+        <h2 class="section-title">
+          Selected audio works.
+        </h2>
+
+        <p class="section-intro">
+          ゲーム音楽と映像音楽を分け、
+          SoundCloudのプレイリストをコンパクトなプレイヤーで掲載しています。
+        </p>
+      </div>
+    </div>
+
+
+    <div class="audio-list">
+
+      <!-- Game Music -->
+
+      <article class="audio-block">
+
+        <div>
+          <p class="section-label">
+            Game &amp; Interactive Music
+          </p>
+
+          <h3>
+            Game Music
+          </h3>
+
+          <p>
+            ゲームの世界観、戦闘、探索、
+            プレイヤーの状態を想定して制作した音楽作品です。
+          </p>
+        </div>
+
+
+        <div class="soundcloud-wrap">
+
+          <!--
+            ここにゲーム音楽プレイリストの
+            SoundCloud iframeを貼り付けてください。
+          -->
+
+        <iframe width="100%" 
+          height="300" 
+          scrolling="no" frameborder="no" 
+          allow="autoplay; encrypted-media" 
+          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A2276801489&color=%23e8b2c5&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div 
+          style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a 
+           href="https://soundcloud.com/jxxanlee" title="Jxxan Lee" target="_blank" 
+         style="color: #cccccc; text-decoration: none;">Jxxan Lee</a> · <a 
+       href="https://soundcloud.com/jxxanlee/sets/game-interactive-music" 
+        title="Game &amp; Interactive Music" target="_blank" 
+         style="color: #cccccc; text-decoration: none;">Game &amp; Interactive Music</a></div>
+
+        </div>
+
+      </article>
+
+
+      <!-- Film Music -->
+
+      <article class="audio-block">
+
+        <div>
+          <p class="section-label">
+            Film &amp; Media Scoring
+          </p>
+
+          <h3>
+            Music for Visual Media
+          </h3>
+
+          <p>
+            映画、テレビドラマ、アニメーションなどの
+            物語や感情を想定して制作した劇伴音楽です。
+          </p>
+        </div>
+
+
+        <div class="soundcloud-wrap">
+
+          <!--
+            ここに映像音楽プレイリストの
+            SoundCloud iframeを貼り付けてください。
+          -->
+
+         <iframe 
+           width="100%" 
+           height="300" 
+           scrolling="no" 
+           frameborder="no" 
+           allow="autoplay; encrypted-media" 
+           src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A2276801624&color=%23e8b2c5&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div 
+           style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a 
+            href="https://soundcloud.com/jxxanlee" 
+             title="Jxxan Lee" target="_blank" 
+            style="color: #cccccc; text-decoration: none;">Jxxan Lee</a> · <a 
+            href="https://soundcloud.com/jxxanlee/sets/film-media-scoring" 
+            title="Film &amp; Media Scoring" 
+            target="_blank" 
+              style="color: #cccccc; text-decoration: none;">Film &amp; Media Scoring</a></div>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================
+     Experience
+     ========================= -->
+
+<section
+  class="section"
+  id="experience"
+>
+  <div class="shell">
+
+    <div class="section-heading">
+      <div class="section-number">03</div>
+
+      <div>
+        <p class="section-label">
+          Selected Projects
+        </p>
+
+        <h2 class="section-title">
+          Experience.
+        </h2>
+
+        <p class="section-intro">
+          個人制作・学生制作を中心に、
+          作曲、サウンドデザイン、ゲームオーディオ実装の経験を紹介します。
+        </p>
+      </div>
+    </div>
+
+
+    <div class="timeline">
+
+      <!-- UE5 Horror Game -->
+
+      <article class="timeline-row">
+
+        <div class="timeline-year">
+          2026
+        </div>
+
+        <div class="timeline-title">
+          <h3>
+            UE5 Horror Game
+          </h3>
+
+          <p class="timeline-role">
+            Personal Project
+          </p>
+        </div>
+
+        <p class="timeline-description">
+          Unreal Engine 5とWwiseを使用したホラーゲームを個人制作。
+          グラフィックおよび3Dモデルを除き、ゲームプレイ設計、
+          Blueprint実装、作曲、効果音制作、
+          インタラクティブオーディオ実装を担当。
+        </p>
+
+      </article>
+
+
+      <!-- Boss Battle Music -->
+
+      <article class="timeline-row">
+
+        <div class="timeline-year">
+          2026
+        </div>
+
+        <div class="timeline-title">
+          <h3>
+            Three-Phase Boss Battle Music
+          </h3>
+
+          <p class="timeline-role">
+            Original Project
+          </p>
+        </div>
+
+        <p class="timeline-description">
+          戦闘状況の三段階に合わせて、
+          音楽構成と音響密度が変化する
+          ボス戦用インタラクティブミュージックを制作。
+          作曲、編曲、ギター録音、ミキシングを担当。
+        </p>
+
+      </article>
+
+
+      <!-- Sound Redesign -->
+
+      <article class="timeline-row">
+
+        <div class="timeline-year">
+          2026
+        </div>
+
+        <div class="timeline-title">
+          <h3>
+            Sound Redesign Projects
+          </h3>
+
+          <p class="timeline-role">
+            Student / Personal Works
+          </p>
+        </div>
+
+        <p class="timeline-description">
+          複数の映像に対する効果音制作、フォーリー、
+          編集、ミキシングを行い、
+          画面上の動きや素材感、プレイヤーの手応えを
+          音で伝えるサウンドリデザインを制作。
+        </p>
+
+      </article>
+
+
+      <!-- Composition Activities -->
+
+      <article class="timeline-row">
+
+        <div class="timeline-year">
+          Current
+        </div>
+
+        <div class="timeline-title">
+          <h3>
+            Composition Activities
+          </h3>
+
+          <p class="timeline-role">
+            Kunitachi College of Music
+          </p>
+        </div>
+
+        <p class="timeline-description">
+          二重奏、室内楽、管弦楽、吹奏楽、
+          ファンファーレ、合唱など、
+          さまざまな編成のための作品を制作し、
+          学内外の発表・演奏会に参加。
+          商業のゲームオーケストラコンサートの楽譜制作を手伝い
+        </p>
+
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-heading">
+          <div class="section-number">04</div>
+          <div>
+            <p class="section-label">Academic Research</p>
+            <h2 class="section-title">Research direction.</h2>
+          </div>
+        </div>
+
+        <div class="research-grid">
+          <p class="research-quote">
+            現代音楽の技法を、ゲームと映像のための新しい音響表現へ。
+          </p>
+
+          <div class="research-copy">
+            <p>
+              大学では、現代音楽の作曲技法および特殊奏法を、
+              ゲーム音楽や映像音楽などの商業音楽へ応用し、
+              新しい音響表現を生み出す可能性について研究しています。
+            </p>
+
+            <p>
+              伝統的なオーケストレーションに加え、特殊奏法、音色変化、
+              非機能和声、リズム構造などを活用し、物語、映像、
+              ゲーム体験に適した音楽表現を探求しています。
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Contact -->
+<!-- Contact -->
     <section class="contact-section" id="contact">
       <div class="shell contact-grid">
         <div class="contact-side">Contact</div>
@@ -1164,8 +2013,8 @@
       <div>© 2026 Jxxan Lee</div>
 
       <div class="footer-links">
-        <a href="./index.html">Home</a>
-        <a href="./works.html">Works</a>
+        <a href="#top">Home</a>
+        <a href="#works">Works</a>
         <a href="#areas">Areas</a>
         <a href="#skills">Skills</a>
       </div>
