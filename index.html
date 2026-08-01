@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="ゲームオーディオ、作曲、サウンドデザインのポートフォリオ"
+  >
+
+  <title>YOUR NAME | Sound Portfolio</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 20% 0%, #28304f 0%, transparent 35%),
+        radial-gradient(circle at 90% 20%, #193b46 0%, transparent 30%),
+        #090b10;
+      color: #f5f5f7;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Helvetica Neue",
+        "Hiragino Sans",
+        "Yu Gothic",
+        sans-serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 7%;
+      background: rgba(9, 11, 16, 0.82);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(16px);
+    }
+
+    .logo {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 26px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      font-size: 13px;
+      color: #b8bbc5;
+    }
+
+    nav a:hover {
+      color: #ffffff;
+    }
+
+    main {
+      width: min(1120px, 86%);
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: 82vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 90px 0;
+    }
+
+    .label {
+      margin-bottom: 14px;
+      color: #90d9dc;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 900px;
+      margin: 0;
+      font-size: clamp(46px, 9vw, 105px);
+      line-height: 0.95;
+      letter-spacing: -0.055em;
+    }
+
+    .hero-description {
+      max-width: 680px;
+      margin: 32px 0 0;
+      color: #b8bbc5;
+      font-size: clamp(17px, 2vw, 21px);
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 13px 22px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      transition: 0.2s ease;
+    }
+
+    .button.primary {
+      background: #f5f5f7;
+      color: #101116;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    section {
+      padding: 90px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    h2 {
+      margin: 0 0 36px;
+      font-size: clamp(30px, 5vw, 52px);
+      letter-spacing: -0.035em;
+    }
+
+    .works {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .work-card {
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.045);
+      transition: 0.25s ease;
+    }
+
+    .work-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(144, 217, 220, 0.5);
+    }
+
+    .thumbnail {
+      aspect-ratio: 16 / 9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        linear-gradient(135deg, rgba(77, 92, 146, 0.8), rgba(18, 34, 40, 0.8));
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 14px;
+      letter-spacing: 0.08em;
+    }
+
+    .work-content {
+      padding: 25px;
+    }
+
+    .work-content h3 {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+
+    .work-content p {
+      margin: 0;
+      color: #aeb1bb;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      padding: 5px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 999px;
+      color: #c7cad2;
+      font-size: 12px;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+    }
+
+    .two-column p {
+      color: #b8bbc5;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      padding: 10px 15px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.065);
+      color: #d4d6dd;
+    }
+
+    .contact {
+      padding-bottom: 120px;
+    }
+
+    .email {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: clamp(22px, 4vw, 42px);
+      font-weight: 700;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    footer {
+      width: min(1120px, 86%);
+      margin: 0 auto;
+      padding: 25px 0 45px;
+      color: #777b86;
+      font-size: 12px;
+    }
+
+    @media (max-width: 760px) {
+      nav ul {
+        display: none;
+      }
+
+      .hero {
+        min-height: 72vh;
+      }
+
+      .works,
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+
+      .two-column {
+        gap: 30px;
+      }
+
+      section {
+        padding: 70px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a class="logo" href="#">YOUR NAME</a>
+
+    <ul>
+      <li><a href="#works">Works</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <header class="hero">
+      <div class="label">Sound Designer / Composer</div>
+
+      <h1>
+        Sound creates<br>
+        the experience.
+      </h1>
+
+      <p class="hero-description">
+        ゲーム体験を支える音楽、効果音、インタラクティブオーディオを
+        制作しています。WwiseとUnreal Engineを使用したサウンド実装にも
+        取り組んでいます。
+      </p>
+
+      <div class="buttons">
+        <a class="button primary" href="#works">作品を見る</a>
+        <a class="button" href="#contact">お問い合わせ</a>
+      </div>
+    </header>
+
+    <section id="works">
+      <div class="label">Selected Works</div>
+      <h2>作品</h2>
+
+      <div class="works">
+
+        <article class="work-card">
+          <div class="thumbnail">VIDEO / IMAGE</div>
+
+          <div class="work-content">
+            <h3>UE5 Horror Game Audio</h3>
+
+            <p>
+              Unreal Engine 5とWwiseを使用したホラーゲーム。
+              心拍、呼吸、環境音、インタラクティブミュージックを実装しました。
+            </p>
+
+            <div class="tags">
+              <span class="tag">Wwise</span>
+              <span class="tag">Unreal Engine 5</span>
+              <span class="tag">Blueprint</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <div class="thumbnail">VIDEO / IMAGE</div>
+
+          <div class="work-content">
+            <h3>Three-Phase Boss Battle</h3>
+
+            <p>
+              戦闘の三段階に合わせて展開するボス戦楽曲。
+              ロック、オーケストラ、現代音楽的な表現を組み合わせました。
+            </p>
+
+            <div class="tags">
+              <span class="tag">Composition</span>
+              <span class="tag">Arrangement</span>
+              <span class="tag">Mixing</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <div class="thumbnail">VIDEO / IMAGE</div>
+
+          <div class="work-content">
+            <h3>Sound Design Demo</h3>
+
+            <p>
+              映像に合わせた効果音制作、フォーリー、編集、
+              ミキシングを行ったサウンドリデザイン作品です。
+            </p>
+
+            <div class="tags">
+              <span class="tag">Sound Design</span>
+              <span class="tag">Foley</span>
+              <span class="tag">Pro Tools</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <div class="thumbnail">AUDIO / SCORE</div>
+
+          <div class="work-content">
+            <h3>Orchestral Composition</h3>
+
+            <p>
+              オーケストレーションと現代音楽の技法を活用した
+              オリジナル楽曲です。
+            </p>
+
+            <div class="tags">
+              <span class="tag">Orchestration</span>
+              <span class="tag">Contemporary Music</span>
+              <span class="tag">Logic Pro</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="two-column">
+
+        <div>
+          <div class="label">About</div>
+          <h2>プロフィール</h2>
+        </div>
+
+        <div>
+          <p>
+            作曲、効果音制作、ゲームへのサウンド実装を行っています。
+            音を制作するだけでなく、プレイヤーの感情や判断を導く
+            サウンド演出を考えることを大切にしています。
+          </p>
+
+          <p>
+            大学では、現代音楽の作曲技法や特殊奏法を
+            商業音楽へ応用する可能性について研究しています。
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="label">Skills & Tools</div>
+      <h2>スキル</h2>
+
+      <div class="skills">
+        <span class="skill">Wwise</span>
+        <span class="skill">Unreal Engine 5</span>
+        <span class="skill">Blueprint</span>
+        <span class="skill">Interactive Music</span>
+        <span class="skill">Sound Design</span>
+        <span class="skill">Composition</span>
+        <span class="skill">Orchestration</span>
+        <span class="skill">Logic Pro</span>
+        <span class="skill">Pro Tools</span>
+        <span class="skill">REAPER</span>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="label">Contact</div>
+      <h2>お問い合わせ</h2>
+
+      <p>
+        制作・採用に関するお問い合わせはこちらからお願いいたします。
+      </p>
+
+      <a
+        class="email"
+        href="mailto:your-email@example.com"
+      >
+        your-email@example.com
+      </a>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 YOUR NAME. All Rights Reserved.
+  </footer>
+
+</body>
+</html>
