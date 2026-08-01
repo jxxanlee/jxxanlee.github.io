@@ -607,6 +607,99 @@
       color: var(--muted);
     }
 
+
+    /* Portfolio notice */
+
+    .notice-section {
+      padding: 76px 0;
+      border-top: 1px solid var(--line);
+      background: rgba(255, 253, 249, 0.46);
+    }
+
+    .notice-grid {
+      display: grid;
+      grid-template-columns: 170px minmax(0, 1fr);
+      gap: 60px;
+      align-items: start;
+    }
+
+    .notice-side {
+      color: var(--accent-dark);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .notice-content {
+      max-width: 940px;
+    }
+
+    .notice-content h2 {
+      margin: 0 0 30px;
+      font-family: Georgia, "Times New Roman", "Yu Mincho", serif;
+      font-size: clamp(30px, 3.4vw, 46px);
+      font-weight: 500;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .notice-language {
+      display: grid;
+      grid-template-columns: 110px minmax(0, 1fr);
+      gap: 28px;
+      padding: 25px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .notice-language:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .notice-language h3 {
+      margin: 0;
+      color: var(--accent-dark);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .notice-language p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 2;
+    }
+
+    .notice-language.en p {
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.85;
+    }
+
+    @media (max-width: 760px) {
+      .notice-section {
+        padding: 68px 0;
+      }
+
+      .notice-grid,
+      .notice-language {
+        grid-template-columns: 1fr;
+      }
+
+      .notice-grid {
+        gap: 24px;
+      }
+
+      .notice-language {
+        gap: 10px;
+      }
+
+      .notice-language p {
+        font-size: 15px;
+      }
+    }
+
     /* Contact */
 
     .contact-section {
@@ -1361,7 +1454,7 @@
 
           <div>
             <p class="section-label">Creative Areas</p>
-            <h2 class="section-title">Composition, Sound Design<br>and Interactive Audio.</h2>
+            <h2 class="section-title">Composition, sound design<br>and interactive audio.</h2>
             <p class="section-intro">
               音楽、効果音、ゲーム内実装の三つの領域から、
               作品の世界観と体験を支えるサウンドを制作します。
@@ -1477,7 +1570,7 @@
           <div class="section-number">01</div>
           <div>
             <p class="section-label">Video Works</p>
-            <h2 class="section-title">Selected Video Works.</h2>
+            <h2 class="section-title">Selected video works.</h2>
             <p class="section-intro">
              
             </p>
@@ -1717,7 +1810,7 @@
         </p>
 
         <h2 class="section-title">
-          Selected Audio Works.
+          Selected audio works.
         </h2>
 
         <p class="section-intro">
@@ -1982,7 +2075,7 @@
           <div class="section-number">04</div>
           <div>
             <p class="section-label">Academic Research</p>
-            <h2 class="section-title">Research Direction.</h2>
+            <h2 class="section-title">Research direction.</h2>
           </div>
         </div>
 
@@ -2009,6 +2102,45 @@
     </section>
 
 <!-- Contact -->
+
+    <!-- Portfolio Notice -->
+    <section class="notice-section" id="notice">
+      <div class="shell notice-grid">
+        <div class="notice-side">Notice</div>
+
+        <div class="notice-content">
+          <h2>Portfolio use and copyright notice.</h2>
+
+          <div class="notice-language">
+            <h3>Japanese</h3>
+            <p>
+              本ページに掲載している映像・画像・音声素材は、就職活動における
+              非営利の個人ポートフォリオとして、制作・担当内容を紹介する目的に限って
+              使用しています。元の映像・画像等の著作権は各権利者に帰属します。
+              著作権その他の権利に配慮し、一部の動画はYouTubeの「限定公開」に設定しています。
+              また、本ページは検索エンジンに表示されないよう設定しており、
+              原則としてURLを共有した方を対象に公開しています。
+              掲載内容の無断転載・複製・再配布はご遠慮ください。
+            </p>
+          </div>
+
+          <div class="notice-language en" lang="en">
+            <h3>English</h3>
+            <p>
+              The visual and audio materials presented on this site are used solely in a
+              non-commercial personal portfolio for recruitment purposes, in order to demonstrate
+              the work created and the roles undertaken. Copyright in the original footage, images,
+              and related materials remains with their respective rights holders. Some videos are
+              set to Unlisted on YouTube in consideration of copyright and other rights. This site is
+              configured not to appear in search-engine results and is intended primarily for viewers
+              who have received the URL. Please do not reproduce, redistribute, or share any content
+              without permission.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="contact-section" id="contact">
       <div class="shell contact-grid">
         <div class="contact-side">Contact</div>
