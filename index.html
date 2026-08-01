@@ -3,27 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Jxxan Leeの作曲、サウンドデザイン、ゲームオーディオのポートフォリオ">
+  <meta
+    name="description"
+    content="Jxxan Leeの作曲、サウンドデザイン、ゲームオーディオのポートフォリオ"
+  >
+
+  <!-- 搜索引擎不收录。知道链接的人仍然可以访问。 -->
   <meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
   <meta name="googlebot" content="noindex, nofollow, noarchive, noimageindex">
-  <meta name="theme-color" content="#f4f0e9">
+  <meta name="theme-color" content="#f4f0e8">
+
   <title>Jxxan Lee | Composer &amp; Sound Designer</title>
 
   <style>
     :root {
-      --bg: #f4f0e9;
-      --bg-soft: #faf7f1;
+      --background: #f4f0e8;
+      --background-soft: #faf7f1;
       --surface: #fffdf9;
-      --text: #24231f;
-      --muted: #6f6b63;
-      --light: #928c82;
-      --accent: #5e746a;
-      --accent-deep: #40564d;
+      --text: #26241f;
+      --muted: #716c63;
+      --light: #938c81;
+      --accent: #657970;
+      --accent-dark: #445a50;
       --accent-soft: #dfe7e1;
-      --line: rgba(36, 35, 31, 0.14);
-      --line-strong: rgba(36, 35, 31, 0.25);
-      --shadow: 0 24px 70px rgba(69, 61, 48, 0.12);
-      --content: 1280px;
+      --line: rgba(38, 36, 31, 0.14);
+      --line-strong: rgba(38, 36, 31, 0.26);
+      --shadow: 0 28px 76px rgba(61, 53, 42, 0.13);
+      --content-width: 1280px;
     }
 
     * {
@@ -38,8 +44,8 @@
       margin: 0;
       overflow-x: hidden;
       background:
-        radial-gradient(circle at 93% 7%, rgba(171, 193, 180, 0.30), transparent 27%),
-        linear-gradient(180deg, #f8f5ef 0%, var(--bg) 58%, #eee8de 100%);
+        radial-gradient(circle at 94% 4%, rgba(174, 195, 182, 0.30), transparent 27%),
+        linear-gradient(180deg, #f9f6f0 0%, var(--background) 56%, #eee8de 100%);
       color: var(--text);
       font-family:
         -apple-system,
@@ -62,10 +68,10 @@
       inset: 0;
       z-index: -1;
       pointer-events: none;
-      opacity: 0.24;
+      opacity: 0.23;
       background-image:
-        linear-gradient(rgba(36, 35, 31, 0.022) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(36, 35, 31, 0.022) 1px, transparent 1px);
+        linear-gradient(rgba(38, 36, 31, 0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(38, 36, 31, 0.022) 1px, transparent 1px);
       background-size: 48px 48px;
     }
 
@@ -80,12 +86,12 @@
     }
 
     a:focus-visible {
-      outline: 2px solid var(--accent-deep);
+      outline: 2px solid var(--accent-dark);
       outline-offset: 5px;
     }
 
     .shell {
-      width: min(var(--content), calc(100% - 72px));
+      width: min(var(--content-width), calc(100% - 72px));
       margin-inline: auto;
     }
 
@@ -95,8 +101,8 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(248, 245, 239, 0.88);
       border-bottom: 1px solid var(--line);
+      background: rgba(249, 246, 240, 0.89);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
     }
@@ -142,7 +148,7 @@
       bottom: -8px;
       left: 0;
       height: 1px;
-      background: var(--accent-deep);
+      background: var(--accent-dark);
       transform: scaleX(0);
       transform-origin: right;
       transition: transform 180ms ease;
@@ -154,28 +160,27 @@
       transform-origin: left;
     }
 
-    /* Hero */
+    /* Hero — name and bilingual profile on the left, portrait on the right */
 
     .hero {
       min-height: calc(100vh - 80px);
       display: grid;
-      grid-template-columns: minmax(0, 0.88fr) minmax(430px, 1.12fr);
+      grid-template-columns: minmax(0, 1.06fr) minmax(430px, 0.94fr);
       align-items: center;
-      gap: clamp(42px, 6vw, 92px);
-      padding: 70px 0 104px;
+      gap: clamp(60px, 8vw, 122px);
+      padding: 82px 0 112px;
     }
 
     .hero-copy {
-      position: relative;
-      z-index: 2;
+      min-width: 0;
     }
 
     .eyebrow {
       display: flex;
       align-items: center;
       gap: 15px;
-      margin: 0 0 43px;
-      color: var(--accent-deep);
+      margin: 0 0 34px;
+      color: var(--accent-dark);
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.23em;
@@ -194,14 +199,13 @@
       display: grid;
       grid-template-columns: max-content max-content;
       align-items: end;
-      column-gap: clamp(48px, 7vw, 104px);
+      column-gap: clamp(45px, 6vw, 92px);
       padding: 0;
       margin: 0;
       font: inherit;
     }
 
     .name-group {
-      min-width: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -210,13 +214,13 @@
 
     .name-reading {
       display: block;
-      margin: 0 0 18px;
-      padding-left: 0.20em;
+      margin: 0 0 14px;
+      padding-left: 0.18em;
       color: var(--light);
-      font-size: clamp(12px, 1.2vw, 15px);
+      font-size: clamp(11px, 1.1vw, 14px);
       font-weight: 500;
       line-height: 1;
-      letter-spacing: 0.20em;
+      letter-spacing: 0.18em;
       white-space: nowrap;
     }
 
@@ -228,58 +232,83 @@
         "Hiragino Mincho ProN",
         Georgia,
         serif;
-      font-size: clamp(78px, 10vw, 132px);
+      font-size: clamp(66px, 8vw, 112px);
       font-weight: 500;
-      line-height: 0.95;
+      line-height: 0.96;
       letter-spacing: 0.02em;
       white-space: nowrap;
     }
 
     .name-english {
       display: block;
-      margin-top: 27px;
-      padding-left: 0.20em;
+      margin-top: 22px;
+      padding-left: 0.18em;
       color: var(--muted);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(17px, 2vw, 26px);
-      font-weight: 400;
+      font-size: clamp(16px, 1.8vw, 23px);
       line-height: 1.2;
-      letter-spacing: 0.20em;
+      letter-spacing: 0.18em;
       white-space: nowrap;
     }
 
-    .hero-lead {
-      max-width: 660px;
-      margin: 43px 0 0;
-      color: var(--muted);
-      font-size: clamp(16px, 1.55vw, 19px);
-      line-height: 2;
+    .profile-copy {
+      max-width: 720px;
+      margin-top: 46px;
+      border-top: 1px solid var(--line-strong);
     }
 
-    .hero-lead strong {
-      color: var(--text);
-      font-weight: 600;
+    .profile-language {
+      display: grid;
+      grid-template-columns: 86px minmax(0, 1fr);
+      gap: 26px;
+      padding: 27px 0 29px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .language-label {
+      padding-top: 3px;
+      color: var(--accent-dark);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .profile-text p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.95;
+    }
+
+    .profile-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .profile-text.en p {
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.82;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 38px;
+      margin-top: 30px;
     }
 
     .button {
-      min-height: 50px;
+      min-height: 49px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 12px;
-      padding: 12px 24px;
+      padding: 12px 23px;
       border: 1px solid var(--line-strong);
       border-radius: 999px;
       background: transparent;
       color: var(--text);
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
       letter-spacing: 0.15em;
       text-transform: uppercase;
@@ -293,12 +322,12 @@
 
     .button:hover {
       transform: translateY(-2px);
-      background: rgba(255, 255, 255, 0.55);
+      background: rgba(255, 255, 255, 0.56);
     }
 
     .button.primary {
-      border-color: var(--accent-deep);
-      background: var(--accent-deep);
+      border-color: var(--accent-dark);
+      background: var(--accent-dark);
       color: #fff;
     }
 
@@ -306,7 +335,7 @@
       background: #334a41;
     }
 
-    .button.contact::after {
+    .button.email::after {
       content: "→";
     }
 
@@ -314,8 +343,7 @@
 
     .hero-visual {
       position: relative;
-      width: min(100%, 660px);
-      max-width: 660px;
+      width: min(100%, 620px);
       justify-self: end;
     }
 
@@ -324,17 +352,29 @@
       position: absolute;
       top: -42px;
       right: -42px;
-      width: 76%;
+      width: 75%;
       aspect-ratio: 1;
       border-radius: 50%;
       background: rgba(164, 187, 173, 0.25);
+    }
+
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      right: -20px;
+      bottom: -24px;
+      width: 42%;
+      height: 39%;
+      border: 1px solid rgba(68, 90, 80, 0.28);
+      border-radius: 46% 54% 50% 50%;
+      transform: rotate(-8deg);
     }
 
     .portrait-frame {
       position: relative;
       z-index: 2;
       overflow: hidden;
-      aspect-ratio: 4 / 4.7;
+      aspect-ratio: 4 / 4.8;
       border-radius: 48% 48% 18px 18px;
       background: linear-gradient(145deg, #d7d1c7, #eee9e1);
       box-shadow: var(--shadow);
@@ -346,9 +386,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: rgba(36, 35, 31, 0.38);
+      color: rgba(38, 36, 31, 0.36);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 13px;
+      font-size: 12px;
       letter-spacing: 0.22em;
       text-transform: uppercase;
     }
@@ -363,9 +403,11 @@
     }
 
     .portrait-caption {
+      position: relative;
+      z-index: 3;
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 18px;
       margin-top: 20px;
       color: var(--light);
       font-size: 10px;
@@ -395,7 +437,7 @@
     }
 
     .section-number {
-      color: var(--accent-deep);
+      color: var(--accent-dark);
       font-family: Georgia, "Times New Roman", serif;
       font-size: 13px;
       letter-spacing: 0.14em;
@@ -403,7 +445,7 @@
 
     .section-label {
       margin: 0 0 10px;
-      color: var(--accent-deep);
+      color: var(--accent-dark);
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.21em;
@@ -426,146 +468,56 @@
       font-size: 16px;
     }
 
-    /* Bilingual profile */
-
-    .profile-layout {
-      display: grid;
-      grid-template-columns: minmax(220px, 0.44fr) minmax(0, 1.56fr);
-      gap: clamp(52px, 8vw, 118px);
-      align-items: start;
-    }
-
-    .profile-identity {
-      position: sticky;
-      top: 118px;
-      padding-top: 25px;
-      border-top: 1px solid var(--line-strong);
-    }
-
-    .profile-reading {
-      margin: 0 0 10px;
-      color: var(--light);
-      font-size: 12px;
-      letter-spacing: 0.24em;
-    }
-
-    .profile-identity h3 {
-      margin: 0;
-      font-family: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", Georgia, serif;
-      font-size: clamp(38px, 4vw, 57px);
-      font-weight: 500;
-      line-height: 1.25;
-      letter-spacing: 0.08em;
-    }
-
-    .profile-en-name {
-      margin: 12px 0 0;
-      color: var(--muted);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 15px;
-      letter-spacing: 0.20em;
-      text-transform: uppercase;
-    }
-
-    .profile-role {
-      margin: 36px 0 0;
-      color: var(--accent-deep);
-      font-size: 11px;
-      font-weight: 700;
-      line-height: 1.8;
-      letter-spacing: 0.17em;
-      text-transform: uppercase;
-    }
-
-    .bilingual-profile {
-      border-top: 1px solid var(--line-strong);
-    }
-
-    .profile-language {
-      display: grid;
-      grid-template-columns: 105px minmax(0, 1fr);
-      gap: clamp(26px, 4vw, 52px);
-      padding: 36px 0 44px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .language-label {
-      padding-top: 4px;
-      color: var(--accent-deep);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.19em;
-      text-transform: uppercase;
-    }
-
-    .profile-body {
-      max-width: 760px;
-    }
-
-    .profile-body p {
-      margin: 0 0 22px;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 2.05;
-    }
-
-    .profile-body p:first-child {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .profile-body p:last-child {
-      margin-bottom: 0;
-    }
-
-    .profile-body.en p {
-      font-family: Georgia, "Times New Roman", serif;
-      line-height: 1.95;
-    }
-
-    /* Creative areas */
+    /* Creative Areas */
 
     .areas-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      border-top: 1px solid var(--line);
-      border-left: 1px solid var(--line);
+      border-top: 1px solid var(--line-strong);
+      border-bottom: 1px solid var(--line);
     }
 
     .area-card {
-      min-height: 290px;
+      min-height: 330px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 48px;
-      padding: 34px 36px 30px;
+      gap: 54px;
+      padding: 38px 36px 34px;
       border-right: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      transition: background 180ms ease;
+      transition: background 180ms ease, transform 180ms ease;
+    }
+
+    .area-card:first-child {
+      border-left: 1px solid var(--line);
     }
 
     .area-card:hover {
-      background: rgba(255, 255, 255, 0.40);
+      background: rgba(255, 255, 255, 0.42);
+      transform: translateY(-3px);
     }
 
-    .area-index {
+    .area-number {
       color: var(--accent);
       font-family: Georgia, "Times New Roman", serif;
       font-size: 13px;
+      letter-spacing: 0.12em;
     }
 
     .area-card h3 {
-      margin: 0 0 13px;
+      margin: 0 0 16px;
       font-family: Georgia, "Times New Roman", "Yu Mincho", serif;
-      font-size: 28px;
+      font-size: clamp(28px, 3vw, 40px);
       font-weight: 500;
-      line-height: 1.25;
+      line-height: 1.2;
+      letter-spacing: -0.015em;
     }
 
     .area-card p {
       margin: 0;
       color: var(--muted);
-      font-size: 14px;
+      font-size: 15px;
+      line-height: 1.95;
     }
 
     /* Skills */
@@ -573,17 +525,17 @@
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 26px;
+      gap: 28px;
     }
 
     .skill-group {
-      padding: 30px 0 0;
+      padding: 31px 0 0;
       border-top: 1px solid var(--line-strong);
     }
 
     .skill-group h3 {
       margin: 0 0 22px;
-      color: var(--accent-deep);
+      color: var(--accent-dark);
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.18em;
@@ -604,12 +556,12 @@
       font-size: 19px;
     }
 
-    /* Works callout */
+    /* Works link */
 
     .works-callout {
       position: relative;
       overflow: hidden;
-      min-height: 380px;
+      min-height: 360px;
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
       gap: 40px;
@@ -623,7 +575,7 @@
       content: "";
       position: absolute;
       right: -12%;
-      bottom: -62%;
+      bottom: -64%;
       width: 58%;
       aspect-ratio: 1;
       border-radius: 50%;
@@ -655,7 +607,7 @@
 
     .contact-section {
       padding: 116px 0 78px;
-      background: var(--accent-deep);
+      background: var(--accent-dark);
       color: #f8f5ef;
     }
 
@@ -710,7 +662,7 @@
     /* Footer */
 
     .site-footer {
-      background: var(--accent-deep);
+      background: var(--accent-dark);
       color: rgba(255, 255, 255, 0.55);
     }
 
@@ -733,33 +685,71 @@
 
     /* Responsive */
 
-    @media (max-width: 1020px) {
+    @media (max-width: 1060px) {
       .shell {
-        width: min(var(--content), calc(100% - 48px));
+        width: min(var(--content-width), calc(100% - 48px));
       }
 
       .hero {
-        grid-template-columns: minmax(0, 0.92fr) minmax(360px, 1.08fr);
-        gap: 40px;
+        grid-template-columns: minmax(0, 1fr) minmax(360px, 0.88fr);
+        gap: 48px;
       }
 
       .hero-visual {
         max-width: 560px;
       }
 
-      .areas-grid,
-      .skills-grid {
+      .area-card {
+        padding: 34px 28px 31px;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .hero {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        gap: 58px;
+        padding: 68px 0 92px;
+      }
+
+      .hero-copy {
+        order: 1;
+      }
+
+      .hero-visual {
+        order: 2;
+        width: min(100%, 560px);
+        justify-self: center;
+      }
+
+      .profile-language {
+        grid-template-columns: 78px minmax(0, 1fr);
+      }
+
+      .areas-grid {
         grid-template-columns: 1fr;
       }
 
-      .area-card {
+      .area-card,
+      .area-card:first-child {
         min-height: auto;
+        border-right: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        border-left: 1px solid var(--line);
+      }
+
+      .area-card:last-child {
+        border-bottom: 0;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
       }
     }
 
     @media (max-width: 760px) {
       .shell {
-        width: min(var(--content), calc(100% - 34px));
+        width: min(var(--content-width), calc(100% - 34px));
       }
 
       .nav-inner {
@@ -787,37 +777,20 @@
         font-size: 10px;
       }
 
-      .hero {
-        min-height: auto;
-        grid-template-columns: 1fr;
-        gap: 60px;
-        padding: 68px 0 90px;
-      }
-
-      .hero-copy {
-        order: 1;
-      }
-
-      .hero-visual {
-        order: 2;
-        width: min(100%, 540px);
-        justify-self: center;
-      }
-
       .name-grid {
-        column-gap: clamp(27px, 8vw, 58px);
+        column-gap: clamp(27px, 8vw, 56px);
       }
 
       .name-kanji {
-        font-size: clamp(64px, 19vw, 94px);
+        font-size: clamp(62px, 18vw, 90px);
       }
 
       .name-reading {
-        margin-bottom: 13px;
+        margin-bottom: 12px;
       }
 
       .name-english {
-        margin-top: 19px;
+        margin-top: 18px;
       }
 
       .section {
@@ -828,27 +801,6 @@
         grid-template-columns: 1fr;
         gap: 18px;
         margin-bottom: 48px;
-      }
-
-      .profile-layout {
-        grid-template-columns: 1fr;
-        gap: 44px;
-      }
-
-      .profile-identity {
-        position: static;
-      }
-
-      .profile-language {
-        grid-template-columns: 1fr;
-        gap: 13px;
-        padding: 30px 0 36px;
-      }
-
-      .profile-body p,
-      .profile-body.en p {
-        font-size: 15px;
-        line-height: 1.95;
       }
 
       .works-callout {
@@ -870,20 +822,20 @@
       }
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 520px) {
       .shell {
-        width: min(var(--content), calc(100% - 28px));
+        width: min(var(--content-width), calc(100% - 28px));
       }
 
       .logo {
-        max-width: 110px;
+        max-width: 108px;
         overflow: hidden;
         font-size: 12px;
         text-overflow: ellipsis;
       }
 
       .nav-links {
-        max-width: calc(100% - 120px);
+        max-width: calc(100% - 118px);
       }
 
       .eyebrow {
@@ -896,19 +848,29 @@
       }
 
       .name-reading {
-        margin-bottom: 11px;
+        margin-bottom: 10px;
         font-size: 10px;
-        letter-spacing: 0.16em;
+        letter-spacing: 0.15em;
       }
 
       .name-kanji {
-        font-size: clamp(57px, 20vw, 78px);
+        font-size: clamp(55px, 20vw, 76px);
       }
 
       .name-english {
-        margin-top: 16px;
-        font-size: 14px;
-        letter-spacing: 0.14em;
+        margin-top: 15px;
+        font-size: 13px;
+        letter-spacing: 0.13em;
+      }
+
+      .profile-language {
+        grid-template-columns: 1fr;
+        gap: 9px;
+      }
+
+      .profile-text p,
+      .profile-text.en p {
+        font-size: 13px;
       }
 
       .hero-actions .button {
@@ -949,7 +911,7 @@
         <ul class="nav-links">
           <li><a href="./index.html" aria-current="page">Home</a></li>
           <li><a href="./works.html">Works</a></li>
-          <li><a href="#about">About</a></li>
+          <li><a href="#areas">Areas</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -958,6 +920,7 @@
   </header>
 
   <main>
+    <!-- Hero: name and bilingual profile on the left, portrait on the right -->
     <section class="shell hero">
       <div class="hero-copy">
         <p class="eyebrow">Composer / Sound Designer</p>
@@ -976,28 +939,70 @@
           </span>
         </h1>
 
-        <p class="hero-lead">
-          <strong>ゲームおよび映像作品のための音楽制作</strong>を中心に、
-          効果音制作、サウンドデザイン、インタラクティブオーディオの
-          実装に取り組んでいます。オーケストラ、ロック、現代音楽的な表現を活かし、
-          作品の物語や感情、プレイヤー体験に寄り添う音を制作します。
-        </p>
+        <div class="profile-copy">
+          <div class="profile-language">
+            <div class="language-label">Japanese</div>
+
+            <div class="profile-text">
+              <p>
+                中国出身。作曲を学ぶために来日し、現在、国立音楽大学音楽学部
+                演奏・創作学科作曲専修に在籍。
+              </p>
+
+              <p>
+                在学中にゲームサウンドにも関心を持つようになり、音楽制作だけでなく、
+                効果音制作やインタラクティブオーディオの実装まで、音に関わる領域を
+                横断して手がけられるクリエイターを目指している。
+              </p>
+
+              <p>
+                ゲームおよび映像作品のための音楽制作を中心に、オーケストラ、ロック、
+                現代音楽的な表現を活かし、作品の物語や感情、プレイヤー体験に寄り添う
+                音を制作している。
+              </p>
+            </div>
+          </div>
+
+          <div class="profile-language">
+            <div class="language-label">English</div>
+
+            <div class="profile-text en" lang="en">
+              <p>
+                Born in China, I moved to Japan to study composition and am currently
+                enrolled in the Composition program at Kunitachi College of Music.
+              </p>
+
+              <p>
+                While at university, I developed a strong interest in game audio.
+                I aim to become a versatile audio creator working across music composition,
+                sound design, and interactive audio implementation.
+              </p>
+
+              <p>
+                My work focuses on music for games and visual media. Drawing on orchestral,
+                rock, and contemporary music techniques, I create sound that supports each
+                work’s narrative, emotion, and player experience.
+              </p>
+            </div>
+          </div>
+        </div>
 
         <div class="hero-actions">
           <a class="button primary" href="./works.html">View Works</a>
-          <a class="button" href="#about">About Me</a>
-          <a class="button contact" href="mailto:jxxan.lee@gmail.com">Contact</a>
+          <a class="button" href="#areas">Creative Areas</a>
+          <a class="button email" href="mailto:jxxan.lee@gmail.com">Contact</a>
         </div>
       </div>
 
       <div class="hero-visual">
         <div class="portrait-frame">
           <div class="portrait-placeholder">Profile Photo</div>
+
           <img
             src="./assets/profile.webp"
             alt="李紀先のプロフィール写真"
             width="1000"
-            height="1175"
+            height="1200"
             loading="eager"
             onerror="this.style.display='none'"
           >
@@ -1007,131 +1012,57 @@
       </div>
     </section>
 
-    <section class="section" id="about">
+    <!-- Creative Areas -->
+    <section class="section" id="areas">
       <div class="shell">
         <div class="section-heading">
           <div class="section-number">01</div>
 
           <div>
-            <p class="section-label">Profile</p>
-            <h2 class="section-title">About Jxxan Lee</h2>
-            <p class="section-intro">
-              作曲、サウンドデザイン、ゲームオーディオ実装を通して、
-              物語や体験に寄り添う音を制作しています。
-            </p>
-          </div>
-        </div>
-
-        <div class="profile-layout">
-          <aside class="profile-identity">
-            <p class="profile-reading">リ　キセン</p>
-            <h3>李　紀先</h3>
-            <p class="profile-en-name">Jxxan Lee</p>
-            <p class="profile-role">Composer<br>Sound Designer</p>
-          </aside>
-
-          <div class="bilingual-profile">
-            <div class="profile-language">
-              <div class="language-label">Japanese</div>
-
-              <div class="profile-body">
-                <p>中国出身。</p>
-
-                <p>
-                  作曲を学ぶために来日し、現在、国立音楽大学音楽学部
-                  演奏・創作学科作曲専修に在籍。
-                </p>
-
-                <p>
-                  在学中にゲームサウンドにも関心を持つようになり、
-                  音楽制作だけでなく、効果音制作やインタラクティブオーディオの実装まで、
-                  音に関わる領域を横断して手がけられるクリエイターを目指している。
-                </p>
-
-                <p>
-                  ゲームおよび映像作品のための音楽制作を中心に、
-                  オーケストラ、ロック、現代音楽的な表現を活かし、
-                  作品の物語や感情、プレイヤー体験に寄り添う音を制作している。
-                </p>
-              </div>
-            </div>
-
-            <div class="profile-language">
-              <div class="language-label">English</div>
-
-              <div class="profile-body en" lang="en">
-                <p>Born in China.</p>
-
-                <p>
-                  I moved to Japan to study composition and am currently enrolled
-                  in the Composition program in the Department of Performance &amp;
-                  Composition at Kunitachi College of Music.
-                </p>
-
-                <p>
-                  While at university, I developed a strong interest in game audio.
-                  I aim to become a versatile audio creator who can work across
-                  music composition, sound design, and interactive audio implementation.
-                </p>
-
-                <p>
-                  My work focuses on music for games and visual media. Drawing on
-                  orchestral, rock, and contemporary music techniques, I create sound
-                  that supports each work’s narrative, emotion, and player experience.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="shell">
-        <div class="section-heading">
-          <div class="section-number">02</div>
-
-          <div>
             <p class="section-label">Creative Areas</p>
-            <h2 class="section-title">Music, sound and<br>interactive experience.</h2>
+            <h2 class="section-title">Composition, sound design<br>and interactive audio.</h2>
             <p class="section-intro">
-              作曲だけでなく、効果音制作やゲーム内での音響実装まで含め、
-              作品全体の体験を考えながらサウンドを制作しています。
+              音楽、効果音、ゲーム内実装の三つの領域から、
+              作品の世界観と体験を支えるサウンドを制作します。
             </p>
           </div>
         </div>
 
         <div class="areas-grid">
           <article class="area-card">
-            <div class="area-index">01</div>
+            <div class="area-number">01</div>
+
             <div>
               <h3>Composition</h3>
               <p>
-                ゲーム、映像、アニメーションのための作曲。
-                オーケストラ、ロック、現代音楽的な表現を組み合わせ、
-                世界観や物語に適した音楽を制作します。
+                ゲーム、映画、テレビドラマ、アニメーションのための作曲。
+                それぞれの世界観や物語に適した音楽を制作します。
               </p>
             </div>
           </article>
 
           <article class="area-card">
-            <div class="area-index">02</div>
+            <div class="area-number">02</div>
+
             <div>
               <h3>Sound Design</h3>
               <p>
-                映像に合わせた効果音制作、フォーリー、編集、ミキシングを行い、
-                画面上の動きや質感を音によって伝えます。
+                ゲームの効果音制作、フォーリー、編集、ミキシングを行い、
+                プレイヤーの手応えと直結する音や、画面上の動き・質感を
+                伝える音を制作します。
               </p>
             </div>
           </article>
 
           <article class="area-card">
-            <div class="area-index">03</div>
+            <div class="area-number">03</div>
+
             <div>
               <h3>Interactive Audio</h3>
               <p>
                 Wwise、Unreal Engine 5、Blueprintを使用し、
-                プレイヤーの状態やゲーム展開に応じて変化する音楽とサウンドを実装します。
+                ゲームの状態やプレイヤーの行動に応じて変化する
+                音楽・効果音を設計し、ゲーム内へ実装します。
               </p>
             </div>
           </article>
@@ -1139,14 +1070,15 @@
       </div>
     </section>
 
+    <!-- Skills -->
     <section class="section" id="skills">
       <div class="shell">
         <div class="section-heading">
-          <div class="section-number">03</div>
+          <div class="section-number">02</div>
 
           <div>
             <p class="section-label">Skills &amp; Tools</p>
-            <h2 class="section-title">Selected skills.</h2>
+            <h2 class="section-title">Music, game audio<br>and production tools.</h2>
           </div>
         </div>
 
@@ -1189,6 +1121,7 @@
       </div>
     </section>
 
+    <!-- Link to Works page -->
     <section class="section">
       <div class="shell">
         <div class="works-callout">
@@ -1197,7 +1130,7 @@
             <h2>Selected Works</h2>
             <p>
               ゲームオーディオ実装、YouTube映像作品、ゲーム音楽、
-              映像音楽、制作経験および学校での研究方向をWorksページにまとめています。
+              映像音楽、SoundCloudプレイリストをWorksページにまとめています。
             </p>
           </div>
 
@@ -1206,6 +1139,7 @@
       </div>
     </section>
 
+    <!-- Contact -->
     <section class="contact-section" id="contact">
       <div class="shell contact-grid">
         <div class="contact-side">Contact</div>
@@ -1224,10 +1158,12 @@
   <footer class="site-footer">
     <div class="shell footer-inner">
       <div>© 2026 Jxxan Lee</div>
+
       <div class="footer-links">
         <a href="./index.html">Home</a>
         <a href="./works.html">Works</a>
-        <a href="#about">About</a>
+        <a href="#areas">Areas</a>
+        <a href="#skills">Skills</a>
       </div>
     </div>
   </footer>
