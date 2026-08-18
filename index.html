@@ -1885,7 +1885,8 @@
       /* On phones, crop the upper part of the portrait into a landscape image. */
       .hero-visual {
         order: 1;
-        width: 100%;
+        width: min(86%, 520px);
+        align-self: center;
       }
 
       .hero-visual::before {
@@ -1907,7 +1908,7 @@
       }
 
       .portrait-frame img {
-        object-position: center 14%;
+        object-position: center 24%;
       }
 
       .portrait-caption {
@@ -2084,8 +2085,22 @@
       }
 
       .timeline-row {
+        grid-template-columns: minmax(0, 1fr);
         gap: 10px;
         padding: 25px 0 28px;
+      }
+
+      #experience .timeline-year,
+      #experience .timeline-title,
+      #experience .timeline-description {
+        grid-column: 1;
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+        writing-mode: horizontal-tb;
+        white-space: normal;
+        word-break: normal;
+        overflow-wrap: break-word;
       }
 
       .timeline-title h3 {
