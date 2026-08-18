@@ -1728,6 +1728,453 @@
       }
     }
 
+    /* =========================================
+       Final mobile layout fixes
+       Kept at the end so these rules reliably
+       override the earlier desktop/tablet styles.
+       ========================================= */
+
+    @media (max-width: 760px) {
+      :root {
+        --mobile-gutter: 20px;
+      }
+
+      html {
+        scroll-padding-top: 112px;
+      }
+
+      body {
+        font-size: 16px;
+        line-height: 1.72;
+      }
+
+      .shell {
+        width: calc(100% - (var(--mobile-gutter) * 2));
+      }
+
+      /* Two-row navigation keeps every item readable without squeezing. */
+      .nav-inner {
+        min-height: 0;
+        display: block;
+        padding-top: 12px;
+        padding-bottom: 9px;
+      }
+
+      .logo {
+        display: block;
+        width: fit-content;
+        max-width: none;
+        margin-bottom: 8px;
+        overflow: visible;
+        font-size: 12px;
+        line-height: 1.2;
+        text-overflow: clip;
+      }
+
+      .nav-inner nav {
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .nav-links {
+        width: 100%;
+        max-width: none;
+        gap: 18px;
+        padding: 2px 0 5px;
+        overflow-x: auto;
+        overscroll-behavior-inline: contain;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .nav-links a {
+        display: block;
+        padding-block: 3px;
+        font-size: 10px;
+        letter-spacing: 0.11em;
+      }
+
+      .nav-links a::after {
+        bottom: -3px;
+      }
+
+      #works,
+      #experience,
+      #areas,
+      #skills,
+      #contact,
+      #notice {
+        scroll-margin-top: 112px;
+      }
+
+      /* Compact hero rhythm for a narrow viewport. */
+      .hero {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        padding: 42px 0 62px;
+      }
+
+      .hero-copy {
+        order: 2;
+      }
+
+      .eyebrow {
+        gap: 11px;
+        margin-bottom: 22px;
+        font-size: 10px;
+        line-height: 1.45;
+        letter-spacing: 0.16em;
+      }
+
+      .eyebrow::before {
+        width: 34px;
+        flex: 0 0 34px;
+      }
+
+      .name-grid {
+        max-width: 100%;
+        column-gap: clamp(20px, 8vw, 34px);
+      }
+
+      .name-reading {
+        margin-bottom: 8px;
+        font-size: clamp(12px, 3.7vw, 14px);
+      }
+
+      .name-kanji {
+        font-size: clamp(44px, 15vw, 64px);
+      }
+
+      .name-english {
+        margin-top: 11px;
+        font-size: clamp(13px, 4vw, 16px);
+      }
+
+      .profile-copy {
+        margin-top: 30px;
+      }
+
+      .profile-language {
+        gap: 7px;
+        padding: 21px 0 23px;
+      }
+
+      .language-label {
+        font-size: 10px;
+      }
+
+      .profile-text p,
+      .profile-text.en p {
+        margin-bottom: 14px;
+        font-size: 15px;
+        line-height: 1.78;
+      }
+
+      .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-top: 24px;
+      }
+
+      .hero-actions .button {
+        width: 100%;
+        min-height: 46px;
+      }
+
+      /* On phones, crop the upper part of the portrait into a landscape image. */
+      .hero-visual {
+        order: 1;
+        width: 100%;
+      }
+
+      .hero-visual::before {
+        top: -18px;
+        right: -12px;
+        width: 46%;
+      }
+
+      .hero-visual::after {
+        right: -8px;
+        bottom: -12px;
+        width: 30%;
+        height: 46%;
+      }
+
+      .portrait-frame {
+        aspect-ratio: 16 / 9;
+        border-radius: 18px;
+      }
+
+      .portrait-frame img {
+        object-position: center 14%;
+      }
+
+      .portrait-caption {
+        gap: 12px;
+        margin-top: 13px;
+      }
+
+      /* Sections and work cards stay comfortably inside the viewport. */
+      .section,
+      .section + .section {
+        padding: 50px 0;
+      }
+
+      .section-heading {
+        margin-bottom: 30px;
+      }
+
+      .section-label,
+      .page-kicker {
+        font-size: 11px;
+        line-height: 1.5;
+      }
+
+      .section-title {
+        font-size: clamp(29px, 8.5vw, 39px);
+        overflow-wrap: anywhere;
+      }
+
+      .section-title br {
+        display: none;
+      }
+
+      .section-intro,
+      .page-intro,
+      .area-card p,
+      .video-description,
+      .audio-block p,
+      .timeline-year,
+      .timeline-description,
+      .research-copy p {
+        font-size: 15px;
+        line-height: 1.78;
+      }
+
+      /* Present the three creative areas as one compact mobile block. */
+      #areas .areas-grid {
+        display: block;
+        overflow: hidden;
+        padding: 0 18px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: rgba(255, 253, 249, 0.52);
+      }
+
+      #areas .area-card,
+      #areas .area-card:first-child,
+      #areas .area-card:last-child {
+        display: block;
+        min-height: 0;
+        padding: 16px 0 17px;
+        border: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      #areas .area-card:last-child {
+        border-bottom: 0;
+      }
+
+      #areas .area-number {
+        display: none;
+      }
+
+      #areas .area-card h3 {
+        margin-bottom: 5px;
+        font-size: 21px;
+        line-height: 1.25;
+      }
+
+      #areas .area-card p {
+        font-size: 14px;
+        line-height: 1.68;
+      }
+
+      /* Keep Music, Game Audio and Tools side by side on phones. */
+      #skills .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0;
+        align-items: start;
+        border-top: 1px solid var(--line-strong);
+        border-bottom: 1px solid var(--line);
+      }
+
+      #skills .skill-group {
+        min-width: 0;
+        padding: 16px 12px 18px;
+        border-top: 0;
+        border-left: 1px solid var(--line);
+      }
+
+      #skills .skill-group:first-child {
+        border-left: 0;
+      }
+
+      #skills .skill-group h3 {
+        margin-bottom: 11px;
+        font-size: 10px;
+        line-height: 1.35;
+        letter-spacing: 0.1em;
+      }
+
+      #skills .skill-group ul {
+        gap: 7px;
+      }
+
+      #skills .skill-group li {
+        font-size: 13px;
+        line-height: 1.42;
+        overflow-wrap: anywhere;
+      }
+
+      .page-hero {
+        padding: 50px 0 18px;
+      }
+
+      .page-title {
+        font-size: clamp(46px, 16vw, 62px);
+      }
+
+      .video-grid {
+        gap: 42px;
+      }
+
+      .video-meta {
+        padding-top: 14px;
+        margin-top: 14px;
+      }
+
+      .video-meta h3 {
+        font-size: 23px;
+      }
+
+      .video-type {
+        font-size: 10px;
+        line-height: 1.5;
+      }
+
+      .tags {
+        gap: 6px;
+        margin-top: 14px;
+      }
+
+      .tag {
+        padding: 6px 10px;
+        font-size: 10px;
+      }
+
+      .audio-list {
+        gap: 40px;
+      }
+
+      .audio-block {
+        gap: 22px;
+        padding-top: 22px;
+      }
+
+      .soundcloud-wrap,
+      .embed-placeholder {
+        min-height: 220px;
+      }
+
+      .soundcloud-wrap iframe {
+        height: 220px;
+      }
+
+      .timeline-row {
+        gap: 10px;
+        padding: 25px 0 28px;
+      }
+
+      .timeline-title h3 {
+        font-size: 23px;
+      }
+
+      .research-grid {
+        gap: 25px;
+      }
+
+      .research-quote {
+        font-size: clamp(25px, 7.6vw, 34px);
+        line-height: 1.45;
+      }
+
+      .notice-section {
+        padding: 54px 0;
+      }
+
+      .notice-content h2 {
+        margin-bottom: 22px;
+        font-size: clamp(27px, 8vw, 37px);
+      }
+
+      .notice-language {
+        padding: 20px 0;
+      }
+
+      .notice-language p {
+        font-size: 14px;
+        line-height: 1.85;
+      }
+
+      .contact-section {
+        padding: 76px 0 58px;
+      }
+
+      .contact-main h2 {
+        font-size: clamp(40px, 12vw, 58px);
+      }
+
+      .contact-email {
+        max-width: 100%;
+        gap: 10px;
+        margin-top: 28px;
+        font-size: clamp(17px, 5.2vw, 24px);
+        overflow-wrap: anywhere;
+        word-break: break-word;
+      }
+
+      .footer-inner {
+        min-height: 104px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      :root {
+        --mobile-gutter: 16px;
+      }
+
+      .nav-links {
+        gap: 15px;
+      }
+
+      .name-grid {
+        column-gap: 18px;
+      }
+
+      .name-kanji {
+        font-size: clamp(42px, 15vw, 56px);
+      }
+
+      #areas .areas-grid {
+        padding-inline: 15px;
+      }
+
+      #skills .skill-group {
+        padding-inline: 8px;
+      }
+
+      #skills .skill-group h3 {
+        font-size: 9px;
+      }
+
+      #skills .skill-group li {
+        font-size: 11.5px;
+      }
+    }
+
   </style>
 </head>
 
@@ -1816,7 +2263,6 @@
   compositional techniques, Creates music and sound that reinforce
   narrative, emotion, visual storytelling, and player engagement.
 </p>
-              </p>
             </div>
           </div>
         </div>
@@ -2135,22 +2581,15 @@
 
   <article class="video-work">
     <div class="video-frame">
-
-      <!--
-        视频上传后，把下面的 video-placeholder 删除，
-        换成 YouTube iframe。
-      -->
-
-     <div class="video-frame">
-  <iframe
-    src="https://www.youtube.com/embed/6ejay9cXgkI"
-    title="Film & Media Scoring Reel"
-    loading="lazy"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    referrerpolicy="strict-origin-when-cross-origin"
-    allowfullscreen
-  ></iframe>
-</div>
+      <iframe
+        src="https://www.youtube.com/embed/6ejay9cXgkI"
+        title="Film & Media Scoring Reel"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    </div>
 
     <div class="video-meta">
       <h3>Film &amp; Media Scoring Reel</h3>
