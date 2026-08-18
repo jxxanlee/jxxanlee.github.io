@@ -1207,6 +1207,10 @@
       border: 0;
     }
 
+    .soundcloud-mobile {
+      display: none !important;
+    }
+
     .embed-placeholder {
       min-height: 250px;
       display: grid;
@@ -1885,7 +1889,7 @@
       /* On phones, crop the upper part of the portrait into a landscape image. */
       .hero-visual {
         order: 1;
-        width: min(86%, 520px);
+        width: min(78%, 480px);
         align-self: center;
       }
 
@@ -1903,7 +1907,7 @@
       }
 
       .portrait-frame {
-        aspect-ratio: 16 / 9;
+        aspect-ratio: 4 / 3;
         border-radius: 18px;
       }
 
@@ -2077,11 +2081,16 @@
 
       .soundcloud-wrap,
       .embed-placeholder {
-        min-height: 220px;
+        min-height: 450px;
       }
 
-      .soundcloud-wrap iframe {
-        height: 220px;
+      .soundcloud-wrap .soundcloud-desktop {
+        display: none;
+      }
+
+      .soundcloud-wrap .soundcloud-mobile {
+        display: block !important;
+        height: 450px;
       }
 
       .timeline-row {
@@ -2477,43 +2486,7 @@
   </article>
 
 
-  <!-- 2. Three-Phase Boss Battle Demo -->
-
-  <article class="video-work">
-    <div class="video-frame">
-      <iframe
-        src="https://www.youtube.com/embed/hW5pYX2Rsoc"
-        title="Three-Phase Boss Battle Demo"
-        loading="lazy"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen
-      ></iframe>
-    </div>
-
-    <div class="video-meta">
-      <h3>Three-Phase Boss Battle Demo</h3>
-
-      <div class="video-type">
-        Interactive Music
-      </div>
-    </div>
-
-    <p class="video-description">
-      戦闘の三段階に合わせて展開するボス戦楽曲。
-      ロック、オーケストラ、現代音楽的な表現を組み合わせました。
-    </p>
-
-    <div class="tags">
-      <span class="tag">Wwise</span>
-      <span class="tag">Composition</span>
-      <span class="tag">Arrangement</span>
-      <span class="tag">Guitar</span>
-    </div>
-  </article>
-
-
-  <!-- 3. Sound Design & Film Scoring Demo -->
+  <!-- 2. Sound Design & Film Scoring Demo -->
 
   <article class="video-work">
     <div class="video-frame">
@@ -2545,6 +2518,42 @@
       <span class="tag">Film Scoring</span>
       <span class="tag">Foley</span>
       <span class="tag">Mixing</span>
+    </div>
+  </article>
+
+
+  <!-- 3. Three-Phase Boss Battle Demo -->
+
+  <article class="video-work">
+    <div class="video-frame">
+      <iframe
+        src="https://www.youtube.com/embed/hW5pYX2Rsoc"
+        title="Three-Phase Boss Battle Demo"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <div class="video-meta">
+      <h3>Three-Phase Boss Battle Demo</h3>
+
+      <div class="video-type">
+        Interactive Music
+      </div>
+    </div>
+
+    <p class="video-description">
+      戦闘の三段階に合わせて展開するボス戦楽曲。
+      ロック、オーケストラ、現代音楽的な表現を組み合わせました。
+    </p>
+
+    <div class="tags">
+      <span class="tag">Wwise</span>
+      <span class="tag">Composition</span>
+      <span class="tag">Arrangement</span>
+      <span class="tag">Guitar</span>
     </div>
   </article>
 
@@ -2722,11 +2731,20 @@
             SoundCloud iframeを貼り付けてください。
           -->
 
-        <iframe width="100%" 
+        <iframe class="soundcloud-desktop" width="100%" 
           height="300" 
           scrolling="no" frameborder="no" 
           allow="autoplay; encrypted-media" 
-          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A2276801489&color=%23e8b2c5&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div 
+          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A2276801489&color=%23e8b2c5&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+        <iframe class="soundcloud-mobile"
+          title="Game &amp; Interactive Music playlist"
+          width="100%"
+          height="450"
+          scrolling="no"
+          frameborder="no"
+          allow="autoplay; encrypted-media"
+          loading="lazy"
+          src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/jxxanlee/sets/game-interactive-music&amp;color=%23657970&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false"></iframe><div 
           style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a 
            href="https://soundcloud.com/jxxanlee" title="Jxxan Lee" target="_blank" 
          style="color: #cccccc; text-decoration: none;">Jxxan Lee</a> · <a 
@@ -2766,13 +2784,22 @@
             SoundCloud iframeを貼り付けてください。
           -->
 
-         <iframe 
+         <iframe class="soundcloud-desktop" 
            width="100%" 
            height="300" 
            scrolling="no" 
            frameborder="no" 
            allow="autoplay; encrypted-media" 
-           src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A2276801624&color=%23e8b2c5&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div 
+           src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A2276801624&color=%23e8b2c5&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+         <iframe class="soundcloud-mobile"
+           title="Film &amp; Media Scoring playlist"
+           width="100%"
+           height="450"
+           scrolling="no"
+           frameborder="no"
+           allow="autoplay; encrypted-media"
+           loading="lazy"
+           src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/jxxanlee/sets/film-media-scoring&amp;color=%23657970&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false"></iframe><div 
            style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a 
             href="https://soundcloud.com/jxxanlee" 
              title="Jxxan Lee" target="_blank" 
