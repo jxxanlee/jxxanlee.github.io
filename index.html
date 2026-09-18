@@ -2210,6 +2210,320 @@
       }
     }
 
+
+    /* =========================================
+       Score viewer
+       ========================================= */
+
+    .scores-section {
+      padding-top: 24px;
+    }
+
+    .score-layout {
+      display: grid;
+      grid-template-columns: minmax(250px, 0.36fr) minmax(0, 1fr);
+      gap: clamp(28px, 5vw, 70px);
+      align-items: start;
+    }
+
+    .score-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .score-card {
+      appearance: none;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 88px minmax(0, 1fr) 18px;
+      gap: 16px;
+      align-items: center;
+      padding: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 253, 249, 0.72);
+      color: var(--text);
+      text-align: left;
+      cursor: pointer;
+      transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+      font: inherit;
+    }
+
+    .score-card:hover,
+    .score-card.is-active {
+      border-color: var(--line-strong);
+      background: var(--surface);
+    }
+
+    .score-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .score-card-preview {
+      width: 88px;
+      aspect-ratio: 0.707 / 1;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      background: #f7f3eb;
+      color: var(--light);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-align: center;
+    }
+
+    .score-thumb {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #ffffff;
+    }
+
+    .score-card-info {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .score-card-info strong {
+      font-family: Georgia, "Times New Roman", "Yu Mincho", serif;
+      font-size: 19px;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    .score-card-info span {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .score-card-arrow {
+      color: var(--accent-dark);
+      font-size: 16px;
+    }
+
+    .score-viewer {
+      min-width: 0;
+      border: 1px solid var(--line-strong);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .score-viewer-toolbar {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 15px 18px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(250, 247, 241, 0.92);
+    }
+
+    .score-viewer-label {
+      margin: 0 0 3px;
+      color: var(--accent-dark);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+    }
+
+    .score-viewer-title {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", "Yu Mincho", serif;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    .score-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .score-controls button {
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--line-strong);
+      background: transparent;
+      color: var(--text);
+      cursor: pointer;
+      font: inherit;
+      line-height: 1;
+    }
+
+    .score-controls button:hover:not(:disabled) {
+      background: var(--accent-soft);
+    }
+
+    .score-controls button:disabled {
+      opacity: 0.32;
+      cursor: default;
+    }
+
+    #scorePageNumber {
+      min-width: 54px;
+      color: var(--muted);
+      font-size: 11px;
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .score-canvas-wrap {
+      position: relative;
+      min-height: 720px;
+      max-height: 78vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      background:
+        linear-gradient(90deg, rgba(38,36,31,0.025) 1px, transparent 1px),
+        linear-gradient(rgba(38,36,31,0.025) 1px, transparent 1px),
+        #e9e4da;
+      background-size: 28px 28px;
+      overscroll-behavior: contain;
+      touch-action: pan-y;
+      cursor: grab;
+    }
+
+    .score-canvas-wrap.is-dragging {
+      cursor: grabbing;
+    }
+
+    #scoreCanvas {
+      display: block;
+      width: min(100%, 760px);
+      height: auto;
+      background: #ffffff;
+      box-shadow: 0 16px 36px rgba(61, 53, 42, 0.14);
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+    }
+
+    .score-loading,
+    .score-error {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 30px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .score-error span {
+      display: block;
+      margin-top: 8px;
+      color: var(--light);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      text-transform: none;
+    }
+
+    .score-viewer-footer {
+      min-height: 46px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      padding: 10px 18px;
+      border-top: 1px solid var(--line);
+      color: var(--light);
+      font-size: 10px;
+      letter-spacing: 0.05em;
+    }
+
+    .score-viewer-footer strong {
+      color: var(--text);
+      font-variant-numeric: tabular-nums;
+    }
+
+    @media (max-width: 900px) {
+      .score-layout {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .score-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .score-canvas-wrap {
+        min-height: 620px;
+        max-height: 72vh;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .scores-section {
+        padding-top: 0;
+      }
+
+      .score-list {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .score-card {
+        grid-template-columns: 58px minmax(0, 1fr) 16px;
+        gap: 12px;
+        padding: 10px;
+      }
+
+      .score-card-preview {
+        width: 58px;
+      }
+
+      .score-card-info strong {
+        font-size: 16px;
+      }
+
+      .score-card-info span {
+        font-size: 10px;
+      }
+
+      .score-viewer-toolbar {
+        min-height: 66px;
+        padding: 12px;
+      }
+
+      .score-viewer-title {
+        font-size: 17px;
+      }
+
+      .score-canvas-wrap {
+        min-height: 520px;
+        max-height: 68vh;
+        padding: 16px 10px;
+      }
+
+      #scoreCanvas {
+        width: 100%;
+      }
+
+      .score-viewer-footer {
+        padding: 9px 12px;
+        font-size: 9px;
+      }
+
+      .score-viewer-footer span:last-child {
+        display: none;
+      }
+    }
+
   </style>
 </head>
 
@@ -2222,6 +2536,7 @@
         <ul class="nav-links">
           <li><a href="#top" aria-current="page">Home</a></li>
           <li><a href="#works">Works</a></li>
+          <li><a href="#scores">Scores</a></li>
           <li><a href="#areas">Areas</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -2260,7 +2575,7 @@
                 演奏・創作学科作曲専修に在籍。現代音楽は川島素晴、桑原ゆうに師事、
                 商業音楽は栗山和樹、富貴晴美から指導を受けている。クラシック、現代音楽、Jpop、
                 Kpop、Jazz、メタル、R&B、etc. 様々なジャンルから影響を
-              受けていた。
+                受けていた。
               </p>
 
               <p>
@@ -2428,7 +2743,6 @@
             <h3>Tools</h3>
             <ul>
               <li>Logic Pro</li>
-               <li>Sibelius</li>
               <li>Pro Tools</li>
               <li>REAPER</li>
               <li>Wwise</li>
@@ -2450,23 +2764,59 @@
       </p>
     </header>
 
-    <section class="section">
-      <div class="shell">
-        <div class="section-heading">
-          <div class="section-number">01</div>
-          <div>
-            <p class="section-label">Video Works</p>
-            <h2 class="section-title">Selected video works.</h2>
-            <p class="section-intro">
-             
-            </p>
-          </div>
+    
+
+    <!-- =========================
+     Audio Works
+     ========================= -->
+
+
+
+<section class="section">
+  <div class="shell">
+
+    <div class="section-heading">
+      <div class="section-number">01</div>
+
+      <div>
+        <p class="section-label">
+          Audio Works
+        </p>
+
+        <h2 class="section-title">
+          Selected audio works.
+        </h2>
+
+        <p class="section-intro">
+          ゲーム音楽と映像音楽を分け、
+          SoundCloudのプレイリストをコンパクトなプレイヤーで掲載しています。
+        </p>
+      </div>
+    </div>
+
+
+    <div class="audio-list">
+
+      <!-- Game Music -->
+
+      <article class="audio-block">
+
+        <div>
+          <p class="section-label">
+            Game &amp; Interactive Music &amp; Film Music
+          </p>
+
+          <h3>
+           Music
+          </h3>
+
+        
         </div>
 
-       <div class="video-grid">
 
+        <div class="soundcloud-wrap">
 
-            <!--
+          <!--
             SoundCloud playlist embed.
             Use the public playlist URL so the same player works on desktop and mobile.
           -->
@@ -2506,6 +2856,23 @@
   </div>
 </section>
 
+
+
+
+<section class="section">
+      <div class="shell">
+        <div class="section-heading">
+          <div class="section-number">02</div>
+          <div>
+            <p class="section-label">Video Works</p>
+            <h2 class="section-title">Selected video works.</h2>
+            <p class="section-intro">
+             
+            </p>
+          </div>
+        </div>
+
+       <div class="video-grid">
 
   <!-- 1. UE5 Horror Game Demo -->
 
@@ -2739,55 +3106,87 @@
   
 
 
+
+
     <!-- =========================
-     Audio Works
-     ========================= -->
-
-<section class="section">
-  <div class="shell">
-
-    <div class="section-heading">
-      <div class="section-number">02</div>
-
-      <div>
-        <p class="section-label">
-          Audio Works
-        </p>
-
-        <h2 class="section-title">
-          Selected audio works.
-        </h2>
-
-        <p class="section-intro">
-          ゲーム音楽と映像音楽を分け、
-          SoundCloudのプレイリストをコンパクトなプレイヤーで掲載しています。
-        </p>
-      </div>
-    </div>
-
-
-    <div class="audio-list">
-
-      <!-- Game Music -->
-
-      <article class="audio-block">
-
-        <div>
-          <p class="section-label">
-            Game &amp; Interactive Music &amp; Film Music
-          </p>
-
-          <h3>
-           Music
-          </h3>
-
-        
+         Selected Scores
+         ========================= -->
+    <section class="section scores-section" id="scores">
+      <div class="shell">
+        <div class="section-heading">
+          <div class="section-number">03</div>
+          <div>
+            <p class="section-label">Selected Scores</p>
+            <h2 class="section-title">Selected scores.</h2>
+            <p class="section-intro">
+              楽譜をブラウザ上で閲覧できます。ページを切り替えて、スコア全体を確認できます。
+            </p>
+          </div>
         </div>
 
+        <div class="score-layout">
+          <div class="score-list" aria-label="Score selection">
+            <button class="score-card is-active" type="button" data-score="./assets/scores/score-01.pdf">
+              <span class="score-card-preview"><canvas class="score-thumb" aria-hidden="true"></canvas></span>
+              <span class="score-card-info">
+                <strong>The Asteroid Field</strong>
+                <span>Orchestra · 2026</span>
+              </span>
+              <span class="score-card-arrow" aria-hidden="true">↗</span>
+            </button>
 
-        <div class="soundcloud-wrap">
+            <button class="score-card" type="button" data-score="./assets/scores/score-02.pdf">
+              <span class="score-card-preview"><canvas class="score-thumb" aria-hidden="true"></canvas></span>
+              <span class="score-card-info">
+                <strong>Score 02</strong>
+                <span>Replace with your work information</span>
+              </span>
+              <span class="score-card-arrow" aria-hidden="true">↗</span>
+            </button>
 
-       
+            <button class="score-card" type="button" data-score="./assets/scores/score-03.pdf">
+              <span class="score-card-preview"><canvas class="score-thumb" aria-hidden="true"></canvas></span>
+              <span class="score-card-info">
+                <strong>Score 03</strong>
+                <span>Replace with your work information</span>
+              </span>
+              <span class="score-card-arrow" aria-hidden="true">↗</span>
+            </button>
+          </div>
+
+          <div class="score-viewer" aria-label="Score viewer">
+            <div class="score-viewer-toolbar">
+              <div>
+                <p class="score-viewer-label">SCORE VIEWER</p>
+                <p class="score-viewer-title" id="scoreViewerTitle">The Asteroid Field</p>
+              </div>
+              <div class="score-controls">
+                <button type="button" id="scorePrev" aria-label="Previous page">←</button>
+                <span id="scorePageNumber">1 / —</span>
+                <button type="button" id="scoreNext" aria-label="Next page">→</button>
+              </div>
+            </div>
+
+            <div class="score-canvas-wrap" id="scoreCanvasWrap">
+              <div class="score-loading" id="scoreLoading">Loading score…</div>
+              <canvas id="scoreCanvas" aria-label="Score page"></canvas>
+              <div class="score-error" id="scoreError" hidden>
+                PDFを読み込めません。<br>
+                <span>assets/scores/ のファイル名を確認してください。</span>
+              </div>
+            </div>
+
+            <div class="score-viewer-footer">
+              <span>Page <strong id="scorePageNumberBottom">1</strong> / <strong id="scorePageCountBottom">—</strong></span>
+              <span>Scroll or use the arrows to view pages</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
 
 <!-- =========================
      Experience
@@ -2800,7 +3199,7 @@
   <div class="shell">
 
     <div class="section-heading">
-      <div class="section-number">03</div>
+      <div class="section-number">04</div>
 
       <div>
         <p class="section-label">
@@ -2941,7 +3340,7 @@
     <section class="section">
       <div class="shell">
         <div class="section-heading">
-          <div class="section-number">04</div>
+          <div class="section-number">05</div>
           <div>
             <p class="section-label">Academic Research</p>
             <h2 class="section-title">Research direction.</h2>
@@ -2989,7 +3388,7 @@
               著作権その他の権利に配慮し、一部の動画はYouTubeの「限定公開」に設定しています。
               また、本ページは検索エンジンに表示されないよう設定しており、
               原則としてURLを共有した方を対象に公開しています。
-              掲載内容の無断転載・複製・再配布はご遠慮ください。
+              掲載内容の無断転載・複製・再配布はご遠慮ください。楽譜は本ページ上での閲覧を目的として掲載しており、ダウンロード機能は設けていません。
             </p>
           </div>
 
@@ -3032,10 +3431,233 @@
       <div class="footer-links">
         <a href="#top">Home</a>
         <a href="#works">Works</a>
+        <a href="#scores">Scores</a>
         <a href="#areas">Areas</a>
         <a href="#skills">Skills</a>
       </div>
     </div>
   </footer>
+
+
+  <!-- PDF.js: renders scores as canvas pages without a built-in download button. -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>
+    (() => {
+      const pdfjsLib = window.pdfjsLib;
+      if (!pdfjsLib) return;
+
+      pdfjsLib.GlobalWorkerOptions.workerSrc =
+        "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+      const cards = [...document.querySelectorAll(".score-card")];
+      const canvas = document.getElementById("scoreCanvas");
+      const canvasWrap = document.getElementById("scoreCanvasWrap");
+      const loading = document.getElementById("scoreLoading");
+      const error = document.getElementById("scoreError");
+      const prev = document.getElementById("scorePrev");
+      const next = document.getElementById("scoreNext");
+      const pageNumber = document.getElementById("scorePageNumber");
+      const pageNumberBottom = document.getElementById("scorePageNumberBottom");
+      const pageCountBottom = document.getElementById("scorePageCountBottom");
+      const title = document.getElementById("scoreViewerTitle");
+      const context = canvas.getContext("2d", { alpha: false });
+
+      let pdf = null;
+      let page = 1;
+      let loadingTask = null;
+
+      const showError = () => {
+        loading.hidden = true;
+        canvas.hidden = true;
+        error.hidden = false;
+        pageNumber.textContent = "— / —";
+        pageNumberBottom.textContent = "—";
+        pageCountBottom.textContent = "—";
+        prev.disabled = true;
+        next.disabled = true;
+      };
+
+      const renderPage = async () => {
+        if (!pdf) return;
+
+        loading.hidden = false;
+        error.hidden = true;
+        canvas.hidden = false;
+
+        const pdfPage = await pdf.getPage(page);
+        const baseViewport = pdfPage.getViewport({ scale: 1 });
+        const maxWidth = Math.min(760, canvasWrap.clientWidth - 64);
+        const scale = Math.max(0.5, maxWidth / baseViewport.width);
+        const viewport = pdfPage.getViewport({ scale });
+        const outputScale = Math.min(window.devicePixelRatio || 1, 2);
+
+        canvas.width = Math.floor(viewport.width * outputScale);
+        canvas.height = Math.floor(viewport.height * outputScale);
+        canvas.style.width = `${viewport.width}px`;
+        canvas.style.height = `${viewport.height}px`;
+
+        const renderContext = {
+          canvasContext: context,
+          viewport,
+          transform: outputScale !== 1 ? [outputScale, 0, 0, outputScale, 0, 0] : null
+        };
+
+        await pdfPage.render(renderContext).promise;
+
+        pageNumber.textContent = `${page} / ${pdf.numPages}`;
+        pageNumberBottom.textContent = String(page);
+        pageCountBottom.textContent = String(pdf.numPages);
+        prev.disabled = page <= 1;
+        next.disabled = page >= pdf.numPages;
+        loading.hidden = true;
+        canvasWrap.scrollTop = 0;
+      };
+
+      const loadScore = async (url, scoreTitle) => {
+        title.textContent = scoreTitle;
+        page = 1;
+        pdf = null;
+        if (loadingTask) {
+          try { await loadingTask.destroy(); } catch (_) {}
+        }
+
+        loading.hidden = false;
+        error.hidden = true;
+        canvas.hidden = true;
+        pageNumber.textContent = "1 / —";
+        pageNumberBottom.textContent = "1";
+        pageCountBottom.textContent = "—";
+        prev.disabled = true;
+        next.disabled = true;
+
+        try {
+          loadingTask = pdfjsLib.getDocument({ url, disableAutoFetch: false });
+          pdf = await loadingTask.promise;
+          await renderPage();
+        } catch (err) {
+          console.error("Score viewer error:", err);
+          showError();
+        }
+      };
+
+
+      const renderThumbnail = async (card) => {
+        const url = card.dataset.score;
+        const thumb = card.querySelector(".score-thumb");
+        if (!thumb) return;
+        try {
+          const task = pdfjsLib.getDocument({ url });
+          const doc = await task.promise;
+          const firstPage = await doc.getPage(1);
+          const base = firstPage.getViewport({ scale: 1 });
+          const width = 160;
+          const viewport = firstPage.getViewport({ scale: width / base.width });
+          const ratio = Math.min(window.devicePixelRatio || 1, 2);
+          thumb.width = Math.floor(viewport.width * ratio);
+          thumb.height = Math.floor(viewport.height * ratio);
+          const ctx = thumb.getContext("2d", { alpha: false });
+          await firstPage.render({
+            canvasContext: ctx,
+            viewport,
+            transform: ratio !== 1 ? [ratio, 0, 0, ratio, 0, 0] : null
+          }).promise;
+          await task.destroy();
+        } catch (_) {
+          // Keep the blank thumbnail if a PDF has not been uploaded yet.
+        }
+      };
+
+      cards.forEach((card) => {
+        card.addEventListener("click", () => {
+          cards.forEach((item) => item.classList.remove("is-active"));
+          card.classList.add("is-active");
+          const scoreTitle = card.querySelector(".score-card-info strong")?.textContent?.trim() || "Score";
+          loadScore(card.dataset.score, scoreTitle);
+        });
+      });
+
+
+      cards.forEach((card) => renderThumbnail(card));
+
+      let touchStartX = null;
+      let touchStartY = null;
+      let wheelLock = false;
+
+      const changePage = async (direction) => {
+        if (!pdf || wheelLock) return;
+        const target = page + direction;
+        if (target < 1 || target > pdf.numPages) return;
+        wheelLock = true;
+        page = target;
+        await renderPage();
+        window.setTimeout(() => { wheelLock = false; }, 260);
+      };
+
+      canvasWrap.addEventListener("wheel", (event) => {
+        if (Math.abs(event.deltaY) < 18) return;
+        event.preventDefault();
+        changePage(event.deltaY > 0 ? 1 : -1);
+      }, { passive: false });
+
+      canvasWrap.addEventListener("touchstart", (event) => {
+        const touch = event.changedTouches[0];
+        touchStartX = touch.clientX;
+        touchStartY = touch.clientY;
+      }, { passive: true });
+
+      canvasWrap.addEventListener("touchend", (event) => {
+        if (touchStartX === null || touchStartY === null) return;
+        const touch = event.changedTouches[0];
+        const dx = touch.clientX - touchStartX;
+        const dy = touch.clientY - touchStartY;
+        touchStartX = null;
+        touchStartY = null;
+        if (Math.abs(dy) < 45 || Math.abs(dy) < Math.abs(dx)) return;
+        changePage(dy < 0 ? 1 : -1);
+      }, { passive: true });
+
+      prev.addEventListener("click", async () => {
+        if (!pdf || page <= 1) return;
+        page -= 1;
+        await renderPage();
+      });
+
+      next.addEventListener("click", async () => {
+        if (!pdf || page >= pdf.numPages) return;
+        page += 1;
+        await renderPage();
+      });
+
+      window.addEventListener("resize", () => {
+        if (pdf) renderPage();
+      });
+
+      // Disable the most obvious browser download/print shortcuts inside the score viewer.
+      canvasWrap.addEventListener("contextmenu", (event) => event.preventDefault());
+      canvasWrap.addEventListener("dragstart", (event) => event.preventDefault());
+      document.addEventListener("keydown", (event) => {
+        const active = document.activeElement;
+        if (!canvasWrap.contains(active) && active !== canvasWrap) return;
+        if ((event.metaKey || event.ctrlKey) && ["s", "p"].includes(event.key.toLowerCase())) {
+          event.preventDefault();
+          return;
+        }
+        if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+          event.preventDefault();
+          changePage(1);
+        }
+        if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+          event.preventDefault();
+          changePage(-1);
+        }
+      });
+
+      const firstCard = cards[0];
+      if (firstCard) {
+        loadScore(firstCard.dataset.score, firstCard.querySelector(".score-card-info strong")?.textContent?.trim() || "Score");
+      }
+    })();
+  </script>
+
 </body>
 </html>
