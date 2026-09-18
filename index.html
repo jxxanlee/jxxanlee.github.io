@@ -1193,23 +1193,24 @@
       line-height: 1.8;
     }
 
+    /* SoundCloud: desktop shows roughly 10 playlist rows without excess space. */
     .soundcloud-wrap {
       overflow: hidden;
-      min-height: 680px;
+      min-height: 500px;
       border: 1px solid var(--line);
       background: var(--surface);
     }
 
     .soundcloud-wrap iframe {
       width: 100%;
-      height: 680px;
+      height: 500px;
       display: block;
       border: 0;
     }
 
     .soundcloud-player {
       width: 100%;
-      height: 680px;
+      height: 500px;
     }
 
     .soundcloud-mobile {
@@ -2084,9 +2085,9 @@
         padding-top: 22px;
       }
 
-      .soundcloud-wrap,
-      .embed-placeholder {
-        min-height: 600px;
+      /* Mobile: keep the SoundCloud player close to a 10-row viewport. */
+      .soundcloud-wrap {
+        min-height: 500px;
       }
 
       .soundcloud-wrap .soundcloud-desktop {
@@ -2100,7 +2101,7 @@
       .soundcloud-wrap .soundcloud-player {
         display: block;
         width: 100%;
-        height: 600px;
+        height: 500px;
       }
 
       .timeline-row {
@@ -2747,16 +2748,16 @@
             SoundCloud playlist embed.
             Use the public playlist URL so the same player works on desktop and mobile.
           -->
-         <iframe
-  class="soundcloud-player"
-  title="Music Demo"
-  width="100%"
-  height="400"
-  scrolling="no"
-  frameborder="no"
-  allow="autoplay; encrypted-media"
-  src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/jxxanlee/sets/game-interactive-music&amp;color=%23e8b2c5&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false"
-></iframe>
+          <iframe
+            class="soundcloud-player"
+            title="Music Demo"
+            width="100%"
+            height="500"
+            scrolling="no"
+            frameborder="no"
+            allow="autoplay; encrypted-media"
+            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/jxxanlee/sets/game-interactive-music&amp;color=%23e8b2c5&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false"
+          ></iframe>
 
 <div
   style="font-size: 10px; color: #cccccc; line-break: anywhere; word-break: normal; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif; font-weight: 100;"
