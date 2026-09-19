@@ -2409,6 +2409,15 @@
       -webkit-touch-callout: none;
     }
 
+
+    /* Important: the score overlays use the HTML `hidden` attribute.
+       This must override their display:grid rule, otherwise
+       "Loading score…" and the error message remain visible even
+       after the PDF has rendered successfully. */
+    [hidden] {
+      display: none !important;
+    }
+
     .score-loading,
     .score-error {
       position: absolute;
@@ -3173,7 +3182,7 @@
               <canvas id="scoreCanvas" aria-label="Score page"></canvas>
               <div class="score-error" id="scoreError" hidden>
                 PDFを読み込めません。<br>
-                <span>assets/scores/ のファイル名を確認してください。</span>
+                <span>assets/scores/ のファイル名・GitHub上の配置・PDFの公開状態を確認してください。</span>
               </div>
             </div>
 
@@ -3510,6 +3519,7 @@
         pageCountBottom.textContent = String(pdf.numPages);
         prev.disabled = page <= 1;
         next.disabled = page >= pdf.numPages;
+        error.hidden = true;
         loading.hidden = true;
         canvasWrap.scrollTop = 0;
       };
@@ -3520,7 +3530,12 @@
         pdf = null;
         if (loadingTask) {
           try { await loadingTask.destroy(); } catch (_) {}
+          loadingTask = null;
         }
+
+        // Clear the previous page immediately so an old score is never
+        // mistaken for the newly selected score while it is loading.
+        context.clearRect(0, 0, canvas.width, canvas.height);
 
         loading.hidden = false;
         error.hidden = true;
