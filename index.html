@@ -2410,10 +2410,7 @@
     }
 
 
-    /* Important: the score overlays use the HTML `hidden` attribute.
-       This must override their display:grid rule, otherwise
-       "Loading score…" and the error message remain visible even
-       after the PDF has rendered successfully. */
+    /* PDF viewer state overlays */
     [hidden] {
       display: none !important;
     }
@@ -3158,7 +3155,7 @@
               <span class="score-card-preview"><canvas class="score-thumb" aria-hidden="true"></canvas></span>
               <span class="score-card-info">
                 <strong>Night And Day</strong>
-                <span>BigBand Arrange · 2025</span>
+                <span>BigBand Arrange</span>
               </span>
               <span class="score-card-arrow" aria-hidden="true">↗</span>
             </button>
@@ -3182,7 +3179,7 @@
               <canvas id="scoreCanvas" aria-label="Score page"></canvas>
               <div class="score-error" id="scoreError" hidden>
                 PDFを読み込めません。<br>
-                <span>assets/scores/ のファイル名・GitHub上の配置・PDFの公開状態を確認してください。</span>
+                <span>assets/scores/ のファイル名を確認してください。</span>
               </div>
             </div>
 
@@ -3442,235 +3439,270 @@
         <a href="#top">Home</a>
         <a href="#works">Works</a>
         <a href="#scores">Scores</a>
-        <a href="#areas">Areas</a>
-        <a href="#skills">Skills</a>
-      </div>
-    </div>
-  </footer>
-
-
-  <!-- PDF.js: renders scores as canvas pages without a built-in download button. -->
+        <a href="#a  <!-- Stable PDF score viewer -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script>
     (() => {
-      const pdfjsLib = window.pdfjsLib;
-      if (!pdfjsLib) return;
-
-      pdfjsLib.GlobalWorkerOptions.workerSrc =
-        "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
-
-      const cards = [...document.querySelectorAll(".score-card")];
-      const canvas = document.getElementById("scoreCanvas");
-      const canvasWrap = document.getElementById("scoreCanvasWrap");
-      const loading = document.getElementById("scoreLoading");
-      const error = document.getElementById("scoreError");
-      const prev = document.getElementById("scorePrev");
-      const next = document.getElementById("scoreNext");
-      const pageNumber = document.getElementById("scorePageNumber");
-      const pageNumberBottom = document.getElementById("scorePageNumberBottom");
-      const pageCountBottom = document.getElementById("scorePageCountBottom");
-      const title = document.getElementById("scoreViewerTitle");
-      const context = canvas.getContext("2d", { alpha: false });
-
-      let pdf = null;
-      let page = 1;
-      let loadingTask = null;
-
-      const showError = () => {
-        loading.hidden = true;
-        canvas.hidden = true;
-        error.hidden = false;
-        pageNumber.textContent = "— / —";
-        pageNumberBottom.textContent = "—";
-        pageCountBottom.textContent = "—";
-        prev.disabled = true;
-        next.disabled = true;
-      };
-
-      const renderPage = async () => {
-        if (!pdf) return;
-
-        loading.hidden = false;
-        error.hidden = true;
-        canvas.hidden = false;
-
-        const pdfPage = await pdf.getPage(page);
-        const baseViewport = pdfPage.getViewport({ scale: 1 });
-        const maxWidth = Math.min(760, canvasWrap.clientWidth - 64);
-        const scale = Math.max(0.5, maxWidth / baseViewport.width);
-        const viewport = pdfPage.getViewport({ scale });
-        const outputScale = Math.min(window.devicePixelRatio || 1, 2);
-
-        canvas.width = Math.floor(viewport.width * outputScale);
-        canvas.height = Math.floor(viewport.height * outputScale);
-        canvas.style.width = `${viewport.width}px`;
-        canvas.style.height = `${viewport.height}px`;
-
-        const renderContext = {
-          canvasContext: context,
-          viewport,
-          transform: outputScale !== 1 ? [outputScale, 0, 0, outputScale, 0, 0] : null
-        };
-
-        await pdfPage.render(renderContext).promise;
-
-        pageNumber.textContent = `${page} / ${pdf.numPages}`;
-        pageNumberBottom.textContent = String(page);
-        pageCountBottom.textContent = String(pdf.numPages);
-        prev.disabled = page <= 1;
-        next.disabled = page >= pdf.numPages;
-        error.hidden = true;
-        loading.hidden = true;
-        canvasWrap.scrollTop = 0;
-      };
-
-      const loadScore = async (url, scoreTitle) => {
-        title.textContent = scoreTitle;
-        page = 1;
-        pdf = null;
-        if (loadingTask) {
-          try { await loadingTask.destroy(); } catch (_) {}
-          loadingTask = null;
-        }
-
-        // Clear the previous page immediately so an old score is never
-        // mistaken for the newly selected score while it is loading.
-        context.clearRect(0, 0, canvas.width, canvas.height);
-
-        loading.hidden = false;
-        error.hidden = true;
-        canvas.hidden = true;
-        pageNumber.textContent = "1 / —";
-        pageNumberBottom.textContent = "1";
-        pageCountBottom.textContent = "—";
-        prev.disabled = true;
-        next.disabled = true;
-
-        try {
-          loadingTask = pdfjsLib.getDocument({ url, disableAutoFetch: false });
-          pdf = await loadingTask.promise;
-          await renderPage();
-        } catch (err) {
-          console.error("Score viewer error:", err);
-          showError();
-        }
-      };
-
-
-      const renderThumbnail = async (card) => {
-        const url = card.dataset.score;
-        const thumb = card.querySelector(".score-thumb");
-        if (!thumb) return;
-        try {
-          const task = pdfjsLib.getDocument({ url });
-          const doc = await task.promise;
-          const firstPage = await doc.getPage(1);
-          const base = firstPage.getViewport({ scale: 1 });
-          const width = 160;
-          const viewport = firstPage.getViewport({ scale: width / base.width });
-          const ratio = Math.min(window.devicePixelRatio || 1, 2);
-          thumb.width = Math.floor(viewport.width * ratio);
-          thumb.height = Math.floor(viewport.height * ratio);
-          const ctx = thumb.getContext("2d", { alpha: false });
-          await firstPage.render({
-            canvasContext: ctx,
-            viewport,
-            transform: ratio !== 1 ? [ratio, 0, 0, ratio, 0, 0] : null
-          }).promise;
-          await task.destroy();
-        } catch (_) {
-          // Keep the blank thumbnail if a PDF has not been uploaded yet.
-        }
-      };
-
-      cards.forEach((card) => {
-        card.addEventListener("click", () => {
-          cards.forEach((item) => item.classList.remove("is-active"));
-          card.classList.add("is-active");
-          const scoreTitle = card.querySelector(".score-card-info strong")?.textContent?.trim() || "Score";
-          loadScore(card.dataset.score, scoreTitle);
-        });
-      });
-
-
-      cards.forEach((card) => renderThumbnail(card));
-
-      let touchStartX = null;
-      let touchStartY = null;
-      let wheelLock = false;
-
-      const changePage = async (direction) => {
-        if (!pdf || wheelLock) return;
-        const target = page + direction;
-        if (target < 1 || target > pdf.numPages) return;
-        wheelLock = true;
-        page = target;
-        await renderPage();
-        window.setTimeout(() => { wheelLock = false; }, 260);
-      };
-
-      canvasWrap.addEventListener("wheel", (event) => {
-        if (Math.abs(event.deltaY) < 18) return;
-        event.preventDefault();
-        changePage(event.deltaY > 0 ? 1 : -1);
-      }, { passive: false });
-
-      canvasWrap.addEventListener("touchstart", (event) => {
-        const touch = event.changedTouches[0];
-        touchStartX = touch.clientX;
-        touchStartY = touch.clientY;
-      }, { passive: true });
-
-      canvasWrap.addEventListener("touchend", (event) => {
-        if (touchStartX === null || touchStartY === null) return;
-        const touch = event.changedTouches[0];
-        const dx = touch.clientX - touchStartX;
-        const dy = touch.clientY - touchStartY;
-        touchStartX = null;
-        touchStartY = null;
-        if (Math.abs(dy) < 45 || Math.abs(dy) < Math.abs(dx)) return;
-        changePage(dy < 0 ? 1 : -1);
-      }, { passive: true });
-
-      prev.addEventListener("click", async () => {
-        if (!pdf || page <= 1) return;
-        page -= 1;
-        await renderPage();
-      });
-
-      next.addEventListener("click", async () => {
-        if (!pdf || page >= pdf.numPages) return;
-        page += 1;
-        await renderPage();
-      });
-
-      window.addEventListener("resize", () => {
-        if (pdf) renderPage();
-      });
-
-      // Disable the most obvious browser download/print shortcuts inside the score viewer.
-      canvasWrap.addEventListener("contextmenu", (event) => event.preventDefault());
-      canvasWrap.addEventListener("dragstart", (event) => event.preventDefault());
-      document.addEventListener("keydown", (event) => {
-        const active = document.activeElement;
-        if (!canvasWrap.contains(active) && active !== canvasWrap) return;
-        if ((event.metaKey || event.ctrlKey) && ["s", "p"].includes(event.key.toLowerCase())) {
-          event.preventDefault();
+      const init = () => {
+        const pdfjsLib = window.pdfjsLib;
+        if (!pdfjsLib) {
+          console.error("PDF.js failed to load.");
           return;
         }
-        if (event.key === "ArrowRight" || event.key === "ArrowDown") {
-          event.preventDefault();
-          changePage(1);
-        }
-        if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
-          event.preventDefault();
-          changePage(-1);
-        }
-      });
 
-      const firstCard = cards[0];
-      if (firstCard) {
-        loadScore(firstCard.dataset.score, firstCard.querySelector(".score-card-info strong")?.textContent?.trim() || "Score");
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+        const cards = [...document.querySelectorAll(".score-card")];
+        const canvas = document.getElementById("scoreCanvas");
+        const wrap = document.getElementById("scoreCanvasWrap");
+        const loading = document.getElementById("scoreLoading");
+        const error = document.getElementById("scoreError");
+        const prev = document.getElementById("scorePrev");
+        const next = document.getElementById("scoreNext");
+        const pageNumber = document.getElementById("scorePageNumber");
+        const pageNumberBottom = document.getElementById("scorePageNumberBottom");
+        const pageCountBottom = document.getElementById("scorePageCountBottom");
+        const title = document.getElementById("scoreViewerTitle");
+        const context = canvas.getContext("2d", { alpha: false });
+
+        let pdf = null;
+        let loadingTask = null;
+        let renderTask = null;
+        let page = 1;
+        let requestId = 0;
+        let touchStartX = null;
+        let touchStartY = null;
+        let wheelTimer = null;
+
+        const setLoading = (on) => { loading.hidden = !on; };
+
+        const showError = (message) => {
+          setLoading(false);
+          canvas.hidden = true;
+          error.hidden = false;
+          const span = error.querySelector("span");
+          if (span) span.textContent = message;
+          pageNumber.textContent = "— / —";
+          pageNumberBottom.textContent = "—";
+          pageCountBottom.textContent = "—";
+          prev.disabled = true;
+          next.disabled = true;
+        };
+
+        const clearCanvas = () => {
+          if (canvas.width && canvas.height) {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+          }
+        };
+
+        const renderPage = async (myRequestId) => {
+          if (!pdf || myRequestId !== requestId) return;
+
+          if (renderTask) {
+            try { renderTask.cancel(); } catch (_) {}
+            renderTask = null;
+          }
+
+          const pdfPage = await pdf.getPage(page);
+          if (myRequestId !== requestId) return;
+
+          const base = pdfPage.getViewport({ scale: 1 });
+          const availableWidth = Math.max(240, wrap.clientWidth - 32);
+          const scale = Math.min(1.8, availableWidth / base.width);
+          const viewport = pdfPage.getViewport({ scale });
+          const outputScale = Math.min(window.devicePixelRatio || 1, 2);
+
+          canvas.width = Math.floor(viewport.width * outputScale);
+          canvas.height = Math.floor(viewport.height * outputScale);
+          canvas.style.width = `${viewport.width}px`;
+          canvas.style.height = `${viewport.height}px`;
+
+          renderTask = pdfPage.render({
+            canvasContext: context,
+            viewport,
+            transform: outputScale !== 1
+              ? [outputScale, 0, 0, outputScale, 0, 0]
+              : null
+          });
+
+          try {
+            await renderTask.promise;
+          } catch (err) {
+            if (err?.name === "RenderingCancelledException") return;
+            throw err;
+          } finally {
+            renderTask = null;
+          }
+
+          if (myRequestId !== requestId) return;
+
+          canvas.hidden = false;
+          error.hidden = true;
+          setLoading(false);
+          pageNumber.textContent = `${page} / ${pdf.numPages}`;
+          pageNumberBottom.textContent = String(page);
+          pageCountBottom.textContent = String(pdf.numPages);
+          prev.disabled = page <= 1;
+          next.disabled = page >= pdf.numPages;
+          wrap.scrollTop = 0;
+        };
+
+        const destroyCurrent = async () => {
+          if (renderTask) {
+            try { renderTask.cancel(); } catch (_) {}
+            renderTask = null;
+          }
+          if (loadingTask) {
+            try { await loadingTask.destroy(); } catch (_) {}
+            loadingTask = null;
+          }
+          if (pdf) {
+            try { await pdf.destroy(); } catch (_) {}
+            pdf = null;
+          }
+        };
+
+        const loadScore = async (url, scoreTitle) => {
+          const myRequestId = ++requestId;
+          title.textContent = scoreTitle;
+          page = 1;
+
+          await destroyCurrent();
+          clearCanvas();
+
+          setLoading(true);
+          error.hidden = true;
+          canvas.hidden = true;
+          pageNumber.textContent = "1 / —";
+          pageNumberBottom.textContent = "1";
+          pageCountBottom.textContent = "—";
+          prev.disabled = true;
+          next.disabled = true;
+
+          try {
+            loadingTask = pdfjsLib.getDocument({
+              url: new URL(url, document.baseURI).href,
+              disableRange: true,
+              disableStream: true,
+              disableAutoFetch: true
+            });
+
+            pdf = await loadingTask.promise;
+            if (myRequestId !== requestId) return;
+            await renderPage(myRequestId);
+          } catch (err) {
+            if (myRequestId !== requestId) return;
+            console.error("Score viewer error:", err);
+            showError("PDFのパス、ファイル名、またはPDF自体を確認してください。");
+          }
+        };
+
+        const loadVisiblePage = async () => {
+          const myRequestId = requestId;
+          try {
+            setLoading(true);
+            await renderPage(myRequestId);
+          } catch (err) {
+            console.error("Page render error:", err);
+            if (myRequestId === requestId) {
+              showError("このページを表示できません。");
+            }
+          }
+        };
+
+        cards.forEach((card) => {
+          card.addEventListener("click", () => {
+            cards.forEach((item) => item.classList.remove("is-active"));
+            card.classList.add("is-active");
+            const scoreTitle =
+              card.querySelector(".score-card-info strong")?.textContent?.trim() || "Score";
+            loadScore(card.dataset.score, scoreTitle);
+          });
+        });
+
+        prev.addEventListener("click", () => {
+          if (page > 1) {
+            page -= 1;
+            loadVisiblePage();
+          }
+        });
+
+        next.addEventListener("click", () => {
+          if (pdf && page < pdf.numPages) {
+            page += 1;
+            loadVisiblePage();
+          }
+        });
+
+        wrap.addEventListener("wheel", (event) => {
+          if (!pdf || wheelTimer || Math.abs(event.deltaY) < 15) return;
+          event.preventDefault();
+
+          if (event.deltaY > 0 && page < pdf.numPages) page += 1;
+          else if (event.deltaY < 0 && page > 1) page -= 1;
+          else return;
+
+          loadVisiblePage();
+          wheelTimer = setTimeout(() => { wheelTimer = null; }, 350);
+        }, { passive: false });
+
+        wrap.addEventListener("touchstart", (event) => {
+          const t = event.changedTouches[0];
+          touchStartX = t.clientX;
+          touchStartY = t.clientY;
+        }, { passive: true });
+
+        wrap.addEventListener("touchend", (event) => {
+          if (!pdf || touchStartX === null) return;
+          const t = event.changedTouches[0];
+          const dx = t.clientX - touchStartX;
+          const dy = t.clientY - touchStartY;
+          touchStartX = null;
+          touchStartY = null;
+
+          if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy)) return;
+
+          if (dx < 0 && page < pdf.numPages) page += 1;
+          else if (dx > 0 && page > 1) page -= 1;
+          else return;
+
+          loadVisiblePage();
+        }, { passive: true });
+
+        // Only load the selected PDF. Do not open all thumbnails simultaneously.
+        cards.forEach((card) => {
+          const thumb = card.querySelector(".score-thumb");
+          if (thumb) thumb.style.background = "#ffffff";
+        });
+
+        if (cards.length) {
+          const first = cards[0];
+          const firstTitle =
+            first.querySelector(".score-card-info strong")?.textContent?.trim() || "Score";
+          first.classList.add("is-active");
+          loadScore(first.dataset.score, firstTitle);
+        }
+
+        let resizeTimer = null;
+        window.addEventListener("resize", () => {
+          if (!pdf) return;
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(loadVisiblePage, 180);
+        });
+
+        wrap.addEventListener("contextmenu", (event) => event.preventDefault());
+        wrap.addEventListener("dragstart", (event) => event.preventDefault());
+      };
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", init, { once: true });
+      } else {
+        init();
+      }
+    })();
+  </script>
+".score-card-info strong")?.textContent?.trim() || "Score");
       }
     })();
   </script>
